@@ -28,7 +28,7 @@ $(document).ready(function () {
 		tabelListRuangan.clear();
 		$.ajax({
 				method: "POST",
-				url: "<?= base_url() ?>index.php/Ruangan/getListRuangan",
+				url: "<?= base_url() ?>index.php/Ruangan/getListTabelJoin",
 				data: {}
 			})
 			.done(function (msg) {
@@ -59,7 +59,7 @@ $(document).ready(function () {
 
 		$.ajax({
 				method: "POST",
-				url: "<?= base_url() ?>index.php/Ruangan/getListJenisRuangan",
+				url: "<?= base_url() ?>index.php/Ruangan/getListTabel",
 				data: {}
 			})
 			.done(function (msg) {

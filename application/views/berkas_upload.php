@@ -11,11 +11,12 @@
 		<table id="tabel-list-ruangan" class="table table-bordered table-striped">
 			<thead>
 				<tr>
-					<th>No</th>
-					<th>Kode Ruang</th>
-					<th>Jenis Ruangan</th>
-					<th>Kapasitas</th>
-					<th>Lokasi</th>
+					<th>ID Berkas Upload</th>
+					<th>ID Calon Santri</th>
+					<th>Tanggal Upload</th>
+					<th>Nama Berkas</th>
+					<th>Lokasi Upload</th>
+					<th>Keterangan</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -109,23 +110,22 @@ $(document).ready(function () {
 		tabelListRuangan.clear();
 		$.ajax({
 				method: "POST",
-				url: "<?= base_url() ?>index.php/Ruangan/getListTabelJoin",
+				url: "<?= base_url() ?>index.php/Berkas_Upload/getListTabel",
 				data: {}
 			})
 			.done(function (msg) {
 				var res = JSON.parse(msg);
 				console.log(res);
-				// $edit = '<button type="button" class="btn bg-gradient-success">Success</button>'
-				// $hapus = '<button type="button" class="btn btn-hapus bg-gradient-danger">Danger</button>'
 				for (i = 0; i < res.length; i++) {
 					$edit = '<button type="button" id_ruangan=' + res[i]['id_ruangan'] + ' class="btn bg-gradient-success btn-ubah" data-toggle="modal" data-target="#modal-form-tambah-ruangan"><i class="far fa-edit"></i>Edit</button>'
 					$hapus = '<button type="button" id_ruangan=' + res[i]['id_ruangan'] + ' class="btn btn-hapus bg-gradient-danger"><i class="far fa-trash-alt"></i>Delete</button>'
 					tabelListRuangan.row.add([
-						i + 1,
-						res[i]['kode_ruangan'],
-						res[i]['nama_jenis_ruangan'],
-						res[i]['kapasitas'],
-						res[i]['lokasi'],
+						res[i]['id_berkas_upload'],
+						res[i]['id_calon_santri'],
+						res[i]['tanggal_upload'],
+						res[i]['nama_berkas'],
+                        res[i]['lokasi_upload'],
+                        res[i]['keterangan'],
 						$edit + $hapus,
 					]).draw(false);
 				}
@@ -140,7 +140,7 @@ $(document).ready(function () {
 
 		$.ajax({
 				method: "POST",
-				url: "<?= base_url() ?>index.php/Ruangan/getListTabel",
+				url: "<?= base_url() ?>index.php/Berkas_Upload/getListTabel",
 				data: {}
 			})
 			.done(function (msg) {
@@ -179,7 +179,7 @@ $(document).ready(function () {
 		var formData = $(this).serialize();
 		$.ajax({
 				method: "POST",
-				url: "<?= base_url() ?>index.php/Ruangan/simpanData",
+				url: "<?= base_url() ?>index.php/Berkas_Upload/simpanData",
 				data: formData
 			})
 			.done(function (msg) {
@@ -214,7 +214,7 @@ $(document).ready(function () {
 		if (confirm("Apakah data ini akan dihapus?")) {
 			$.ajax({
 					method: "POST",
-					url: "<?=base_url()?>index.php/Ruangan/hapusData",
+					url: "<?=base_url()?>index.php/Berkas_Upload/hapusData",
 					data: {
 						id_ruangan: id_ruangan
 					}
@@ -234,7 +234,7 @@ $(document).ready(function () {
 		var id_ruangan = $(this).attr('id_ruangan');
 		$.ajax({
 				method: "POST",
-				url: "<?=base_url()?>index.php/Ruangan/getDataById",
+				url: "<?=base_url()?>index.php/Berkas_Upload/getDataById",
 				data: {
 					id_ruangan: id_ruangan
 				}

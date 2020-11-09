@@ -41,7 +41,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Home</a>
+          <a href="<?=base_url()?>" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
@@ -184,6 +184,12 @@
 
             <li class="nav-header">DATA UMUM SEKOLAH</li>
             <li class="nav-item">
+              <a href="#" class="nav-link" id="berkas_upload">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Berkas Upload</p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="#" class="nav-link" id="menu-profile">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>PROFILE</p>
@@ -228,6 +234,18 @@
               <a href="#" class="nav-link" id="menu-asatidz">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Asatidz</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="role">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Role</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="bendahara">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Bendahara</p>
               </a>
             </li>
           </ul>
@@ -319,20 +337,6 @@
     $("#menu-profile").click(function() {
       $("#title-page").text("PROFILE");
       $("#main-content").load("<?= base_url() ?>index.php/Profil/getProfilPage");
-      // $.ajax({
-      //     method: "POST",
-      //     url: "<?= base_url() ?>index.php/Profil/getDataProfil/1",
-      //     data: {}
-      //   })
-      //   .done(function(msg) {
-      //     var sekolah = JSON.parse(msg);
-      //     $("#label_nama_lengkap_sekolah").text(sekolah['nama_lengkap']);
-      //     $("#label_nama_singkatan").html(sekolah['singkatan']);
-      //     $("#label_alamat").html(sekolah['alamat']);
-      //     $("#label_telepon").html(sekolah['telepon']);
-      //     $("#label_email").html(sekolah['email'])
-      //   });
-      // alert('Selamt')
     });
     $("#menu-kurikulum-2020").click(function() {
       $("#title-page").html("<br>Kurikulum 2020</br>");
@@ -357,6 +361,21 @@
       $("#title-page").html("<br>Asatidz</br>");
       $("#main-content").load("<?= base_url() ?>index.php/Asatidz/index");
     });
+    $("#role").click(function(){
+      $("#title-page").html("<br>Role</br>");
+      $("#main-content").load("<?= base_url() ?>index.php/Role/index");
+    });
+    
+    $("#bendahara").click(function(){
+      $("#title-page").html("<br>Bendahara</br>");
+      $("#main-content").load("<?= base_url() ?>index.php/Bendahara/index");
+    });
+    
+    $("#berkas_upload").click(function(){
+      $("#title-page").html("<br>Berkas Upload</br>");
+      $("#main-content").load("<?= base_url() ?>index.php/Berkas_Upload/index");
+    });
+    
     // $.ajax({
     //     method: "POST",
     //     url: "<?= base_url() ?>index.php/Profil/getDataProfil/1",

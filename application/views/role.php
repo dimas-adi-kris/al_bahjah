@@ -12,15 +12,20 @@
 			<thead>
 				<tr>
 					<th>No</th>
-					<th>Kode Ruang</th>
-					<th>Jenis Ruangan</th>
-					<th>Kapasitas</th>
-					<th>Lokasi</th>
-					<th>Action</th>
+					<th>Nama</th>
 				</tr>
 			</thead>
 			<tbody>
 			</tbody>
+			<!-- <tfoot>
+                <tr>
+                  <th>Rendering engine</th>
+                  <th>Browser</th>
+                  <th>Platform(s)</th>
+                  <th>Engine version</th>
+                  <th>CSS grade</th>
+                </tr>
+                </tfoot> -->
 		</table>
 	</div>
 	<!-- /.card-body -->
@@ -90,15 +95,11 @@ $(document).ready(function () {
 		"responsive": true,
 		"columnDefs": [{
 				"width": "130px",
-				"targets": 5
+				"targets": 1
 			},
 			{
 				"width": "30px",
 				"targets": 0
-			},
-			{
-				"className": "text-center",
-				"targets": [0, 3, 5]
 			},
 		]
 	});
@@ -109,24 +110,16 @@ $(document).ready(function () {
 		tabelListRuangan.clear();
 		$.ajax({
 				method: "POST",
-				url: "<?= base_url() ?>index.php/Ruangan/getListTabelJoin",
+				url: "<?= base_url() ?>index.php/Role/getListRole",
 				data: {}
 			})
 			.done(function (msg) {
 				var res = JSON.parse(msg);
 				console.log(res);
-				// $edit = '<button type="button" class="btn bg-gradient-success">Success</button>'
-				// $hapus = '<button type="button" class="btn btn-hapus bg-gradient-danger">Danger</button>'
 				for (i = 0; i < res.length; i++) {
-					$edit = '<button type="button" id_ruangan=' + res[i]['id_ruangan'] + ' class="btn bg-gradient-success btn-ubah" data-toggle="modal" data-target="#modal-form-tambah-ruangan"><i class="far fa-edit"></i>Edit</button>'
-					$hapus = '<button type="button" id_ruangan=' + res[i]['id_ruangan'] + ' class="btn btn-hapus bg-gradient-danger"><i class="far fa-trash-alt"></i>Delete</button>'
 					tabelListRuangan.row.add([
 						i + 1,
-						res[i]['kode_ruangan'],
-						res[i]['nama_jenis_ruangan'],
-						res[i]['kapasitas'],
-						res[i]['lokasi'],
-						$edit + $hapus,
+						res[i]['nama']
 					]).draw(false);
 				}
 			});
@@ -140,7 +133,7 @@ $(document).ready(function () {
 
 		$.ajax({
 				method: "POST",
-				url: "<?= base_url() ?>index.php/Ruangan/getListTabel",
+				url: "<?= base_url() ?>index.php/Role/getListTabel",
 				data: {}
 			})
 			.done(function (msg) {
@@ -179,7 +172,7 @@ $(document).ready(function () {
 		var formData = $(this).serialize();
 		$.ajax({
 				method: "POST",
-				url: "<?= base_url() ?>index.php/Ruangan/simpanData",
+				url: "<?= base_url() ?>index.php/Role/simpanData",
 				data: formData
 			})
 			.done(function (msg) {
@@ -192,14 +185,6 @@ $(document).ready(function () {
 					alert("Data berhasil disimpan");
 					$("#modal-form-tambah-ruangan").modal("hide");
 					renderTabelListRuangan();
-					// tabelListRuangan.row.add([
-					// 	0,
-					// 	data['kode_ruangan'],
-					// 	data['nama_jenis_ruangan'],
-					// 	data['kapasitas'],
-					// 	data['lokasi'],
-					// 	"edit hapus",
-					// ]).draw(false);
 				} else if (res['status'] == 0 || res['status'] == "0") {
 					alert("Data tidak berhasil disimpan");
 					$("#modal-form-tambah-ruangan").modal("hide");
@@ -214,7 +199,7 @@ $(document).ready(function () {
 		if (confirm("Apakah data ini akan dihapus?")) {
 			$.ajax({
 					method: "POST",
-					url: "<?=base_url()?>index.php/Ruangan/hapusData",
+					url: "<?=base_url()?>index.php/Role/hapusData",
 					data: {
 						id_ruangan: id_ruangan
 					}
@@ -234,7 +219,7 @@ $(document).ready(function () {
 		var id_ruangan = $(this).attr('id_ruangan');
 		$.ajax({
 				method: "POST",
-				url: "<?=base_url()?>index.php/Ruangan/getDataById",
+				url: "<?=base_url()?>index.php/Role/getDataById",
 				data: {
 					id_ruangan: id_ruangan
 				}

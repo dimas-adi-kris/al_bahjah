@@ -9,7 +9,7 @@ class PembayaranModel extends CI_Model
         return $res->result_array();
     }
 
-    // public function getListRuangan()
+    // public function getListTabelJoin()
     // {
     //     $sql = "SELECT
     //     r.*,

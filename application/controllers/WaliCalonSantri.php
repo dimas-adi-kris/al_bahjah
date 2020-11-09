@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Ruangan extends CI_Controller
+class WaliCalonSantri extends CI_Controller
 {
 
     // public function __construct()
@@ -11,7 +11,7 @@ class Ruangan extends CI_Controller
     // }
     public function index()
     {
-        $this->load->view('ruangan');
+        $this->load->view('wali_calon_santri');
     }
     public function getListTabel()
     {

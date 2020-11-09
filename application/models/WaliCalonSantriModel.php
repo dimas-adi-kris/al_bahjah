@@ -2,14 +2,14 @@
 class WaliCalonSantriModel extends CI_Model
 {
 
-    // public function getListJenisRuangan()
+    // public function getListTabel()
     // {
     //     $sql = "SELECT * FROM jenis_ruangan";
     //     $res = $this->db->query($sql);
     //     return $res->result_array();
     // }
 
-    // public function getListRuangan()
+    // public function getListTabelJoin()
     // {
     //     $sql = "SELECT
     //     r.*,
