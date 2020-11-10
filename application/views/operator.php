@@ -192,14 +192,6 @@ $(document).ready(function () {
 					alert("Data berhasil disimpan");
 					$("#modal-form-tambah-ruangan").modal("hide");
 					renderTabelListRuangan();
-					// tabelListRuangan.row.add([
-					// 	0,
-					// 	data['kode_ruangan'],
-					// 	data['nama_jenis_ruangan'],
-					// 	data['kapasitas'],
-					// 	data['lokasi'],
-					// 	"edit hapus",
-					// ]).draw(false);
 				} else if (res['status'] == 0 || res['status'] == "0") {
 					alert("Data tidak berhasil disimpan");
 					$("#modal-form-tambah-ruangan").modal("hide");

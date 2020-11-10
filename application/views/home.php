@@ -184,12 +184,6 @@
 
             <li class="nav-header">DATA UMUM SEKOLAH</li>
             <li class="nav-item">
-              <a href="#" class="nav-link" id="berkas_upload">
-                <i class="fas fa-circle nav-icon"></i>
-                <p>Berkas Upload</p>
-              </a>
-            </li>
-            <li class="nav-item">
               <a href="#" class="nav-link" id="menu-profile">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>PROFILE</p>
@@ -237,15 +231,45 @@
               </a>
             </li>
             <li class="nav-item">
+              <a href="#" class="nav-link" id="bendahara">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Bendahara</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="berkas_upload">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Berkas Upload</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="operator">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Operator</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="pembayaran">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Pembayaran</p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="#" class="nav-link" id="role">
                 <i class="fas fa-circle nav-icon"></i>
                 <p>Role</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" id="bendahara">
+              <a href="#" class="nav-link" id="user">
                 <i class="fas fa-circle nav-icon"></i>
-                <p>Bendahara</p>
+                <p>User</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="wali-calon-santri">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Wali Calon Santri</p>
               </a>
             </li>
           </ul>
@@ -361,10 +385,6 @@
       $("#title-page").html("<br>Asatidz</br>");
       $("#main-content").load("<?= base_url() ?>index.php/Asatidz/index");
     });
-    $("#role").click(function(){
-      $("#title-page").html("<br>Role</br>");
-      $("#main-content").load("<?= base_url() ?>index.php/Role/index");
-    });
     
     $("#bendahara").click(function(){
       $("#title-page").html("<br>Bendahara</br>");
@@ -374,6 +394,31 @@
     $("#berkas_upload").click(function(){
       $("#title-page").html("<br>Berkas Upload</br>");
       $("#main-content").load("<?= base_url() ?>index.php/Berkas_Upload/index");
+    });
+    
+    $("#operator").click(function(){
+      $("#title-page").html("<br>Operator</br>");
+      $("#main-content").load("<?= base_url() ?>index.php/Operator/index");
+    });
+    
+    $("#pembayaran").click(function(){
+      $("#title-page").html("<br>Pembayaran</br>");
+      $("#main-content").load("<?= base_url() ?>index.php/Pembayaran/index");
+    });
+
+    $("#role").click(function(){
+      $("#title-page").html("<br>Role</br>");
+      $("#main-content").load("<?= base_url() ?>index.php/Role/index");
+    });
+    
+    $("#user").click(function(){
+      $("#title-page").html("<br>User</br>");
+      $("#main-content").load("<?= base_url() ?>index.php/User/index");
+    });
+    
+    $("#wali-calon-santri").click(function(){
+      $("#title-page").html("<br>Wali Calon Santri</br>");
+      $("#main-content").load("<?= base_url() ?>index.php/WaliCalonSantri/index");
     });
     
     // $.ajax({

@@ -4,16 +4,19 @@
 	<div class="card-header">
 		<h3 class="card-title">Data Ruangan</h3>
 		<button id="btn-tambah-ruang" type="button" class="btn btn-success float-right" data-toggle="modal"
-			data-target="#modal-form-tambah-ruangan"><i class="fa fa-plus-square" aria-hidden="true"></i>Tambah Ruang</button>
+			data-target="#modal-form-tambah-user"><i class="fa fa-plus-square" aria-hidden="true"></i>Tambah User</button>
 	</div>
 	<!-- /.card-header -->
 	<div class="card-body">
 		<table id="tabel-list-ruangan" class="table table-bordered table-striped">
 			<thead>
 				<tr>
-					<th>id_bendahara</th>
 					<th>id_user</th>
-					<th>divisi</th>
+					<th>id_role</th>
+					<th>password</th>
+					<th>nama</th>
+					<th>email</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -25,12 +28,12 @@
 
 <!-- Modal Form -->
 <!-- Modal -->
-<div class="modal fade" id="modal-form-tambah-ruangan" tabindex="-1" aria-labelledby="ModalLabel"
+<div class="modal fade" id="modal-form-tambah-user" tabindex="-1" aria-labelledby="ModalLabel"
 	aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="ModalLabel">Tambah Ruangan</h5>
+				<h5 class="modal-title" id="ModalLabel">Tambah User</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -38,7 +41,7 @@
 			<div class="modal-body">
 				<!-- Isi Form -->
 				<form id="form-tambah-ruangan">
-					<input type="text" id="id_ruangan" name="id_ruangan" hidden>
+					<input type="text" id="nama" name="nama" hidden>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Kode Ruang</label>
 						<input type="text" class="form-control" id="kode_ruangan" name="kode_ruangan" placeholder="AAABBB">
@@ -106,56 +109,59 @@ $(document).ready(function () {
 		tabelListRuangan.clear();
 		$.ajax({
 				method: "POST",
-				url: "<?= base_url() ?>index.php/Bendahara/getListTabel",
+				url: "<?= base_url() ?>index.php/User/getListTabel",
 				data: {}
 			})
 			.done(function (msg) {
 				var res = JSON.parse(msg);
 				console.log(res);
 				for (i = 0; i < res.length; i++) {
-					$edit = '<button type="button" id_ruangan=' + res[i]['id_ruangan'] + ' class="btn bg-gradient-success btn-ubah" data-toggle="modal" data-target="#modal-form-tambah-ruangan"><i class="far fa-edit"></i>Edit</button>'
+					$edit = '<button type="button" id_ruangan=' + res[i]['id_ruangan'] + ' class="btn bg-gradient-success btn-ubah" data-toggle="modal" data-target="#modal-form-tambah-user"><i class="far fa-edit"></i>Edit</button>'
 					$hapus = '<button type="button" id_ruangan=' + res[i]['id_ruangan'] + ' class="btn btn-hapus bg-gradient-danger"><i class="far fa-trash-alt"></i>Delete</button>'
 					tabelListRuangan.row.add([
-						res[i]['id_bendahara'],
 						res[i]['id_user'],
-                        res[i]['divisi']
+						res[i]['id_role'],
+						res[i]['password'],
+						res[i]['nama'],
+						res[i]['email'],
+						$edit + $hapus,
 					]).draw(false);
 				}
 			});
 	}
 
 
-	// function renderOptionJenisRuangan(currentValue) {
-	// 	$("#id_jenis_ruangan")
-	// 		.empty()
-	// 		.append("<option selected='selected' value'0'>[pilih jenis ruangan]</option>");
+	function renderOptionJenisRuangan(currentValue) {
+		$("#id_jenis_ruangan")
+			.empty()
+			.append("<option selected='selected' value'0'>[pilih jenis ruangan]</option>");
 
-	// 	$.ajax({
-	// 			method: "POST",
-	// 			url: "<?= base_url() ?>index.php/Bendahara/getListTabel",
-	// 			data: {}
-	// 		})
-	// 		.done(function (msg) {
-	// 			var jenisRuangan = JSON.parse(msg);
-	// 			// console.log(jenisRuangan);
-	// 			$.each(jenisRuangan, function (key, value) {
+		$.ajax({
+				method: "POST",
+				url: "<?= base_url() ?>index.php/User/getListTabel",
+				data: {}
+			})
+			.done(function (msg) {
+				var jenisRuangan = JSON.parse(msg);
+				// console.log(jenisRuangan);
+				$.each(jenisRuangan, function (key, value) {
 
-	// 				if (currentValue == value['id_jenis_ruangan']) {
-	// 					$("#id_jenis_ruangan")
-	// 						.append($("<option selected='selected'></option>")
-	// 						.attr("value", value['id_jenis_ruangan'])
-	// 						.text(value['id_jenis_ruangan'] + ":" + value['nama']));
+					if (currentValue == value['id_jenis_ruangan']) {
+						$("#id_jenis_ruangan")
+							.append($("<option selected='selected'></option>")
+							.attr("value", value['id_jenis_ruangan'])
+							.text(value['id_jenis_ruangan'] + ":" + value['nama']));
 
-	// 				} else {
-	// 					$("#id_jenis_ruangan")
-	// 						.append($("<option></option>")
-	// 							.attr("value", value['id_jenis_ruangan'])
-	// 							.text(value['id_jenis_ruangan'] + ":" + value['nama']));
+					} else {
+						$("#id_jenis_ruangan")
+							.append($("<option></option>")
+								.attr("value", value['id_jenis_ruangan'])
+								.text(value['id_jenis_ruangan'] + ":" + value['nama']));
 
-	// 				}
-	// 			});
-	// 		});
-	// }
+					}
+				});
+			});
+	}
 	$("#btn-tambah-ruang").click(function () {
 		$("#id").val('');
 		$("#kode_ruangan").val('');
@@ -171,7 +177,7 @@ $(document).ready(function () {
 		var formData = $(this).serialize();
 		$.ajax({
 				method: "POST",
-				url: "<?= base_url() ?>index.php/Bendahara/simpanData",
+				url: "<?= base_url() ?>index.php/User/simpanData",
 				data: formData
 			})
 			.done(function (msg) {
@@ -182,11 +188,11 @@ $(document).ready(function () {
 
 				if (res['status'] == 1 || res['status'] == "1") {
 					alert("Data berhasil disimpan");
-					$("#modal-form-tambah-ruangan").modal("hide");
+					$("#modal-form-tambah-user").modal("hide");
 					renderTabelListRuangan();
 				} else if (res['status'] == 0 || res['status'] == "0") {
 					alert("Data tidak berhasil disimpan");
-					$("#modal-form-tambah-ruangan").modal("hide");
+					$("#modal-form-tambah-user").modal("hide");
 				} else {
 					console.log(msg);
 				}
@@ -198,7 +204,7 @@ $(document).ready(function () {
 		if (confirm("Apakah data ini akan dihapus?")) {
 			$.ajax({
 					method: "POST",
-					url: "<?=base_url()?>index.php/Bendahara/hapusData",
+					url: "<?=base_url()?>index.php/User/hapusData",
 					data: {
 						id_ruangan: id_ruangan
 					}
@@ -218,7 +224,7 @@ $(document).ready(function () {
 		var id_ruangan = $(this).attr('id_ruangan');
 		$.ajax({
 				method: "POST",
-				url: "<?=base_url()?>index.php/Bendahara/getDataById",
+				url: "<?=base_url()?>index.php/User/getDataById",
 				data: {
 					id_ruangan: id_ruangan
 				}
