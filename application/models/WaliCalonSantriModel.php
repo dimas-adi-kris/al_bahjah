@@ -2,37 +2,31 @@
 class WaliCalonSantriModel extends CI_Model
 {
 
-    // public function getListJenisRuangan()
-    // {
-    //     $sql = "SELECT * FROM jenis_ruangan";
-    //     $res = $this->db->query($sql);
-    //     return $res->result_array();
-    // }
+    public function getListTabel()
+    {
+        $sql = "SELECT * FROM wali_calon_santri";
+        $res = $this->db->query($sql);
+        return $res->result_array();
+    }
 
-    // public function getListRuangan()
-    // {
-    //     $sql = "SELECT
-    //     r.*,
-    //     jr.nama AS nama_jenis_ruangan
-    //   FROM
-    //     ruangan r
-    //     JOIN jenis_ruangan jr ON jr.id_jenis_ruangan = r.id_jenis_ruangan
-    //   ";
-    //     $res = $this->db->query($sql);
-    //     return $res->result_array();
-    // }
+    public function getListTabelJoin()
+    {
+        $sql = "SELECT
+        u.*,
+        r.nama AS nama_role
+      FROM
+        user u
+        JOIN `role` r ON r.id_role = u.id_role
+      ";
+        $res = $this->db->query($sql);
+        return $res->result_array();
+    }
 
     public function insertData($data)
     {
-        // $kapasitas = $data['kapasitas'];
-        // if ($kapasitas == "") {
-        //     $kapasitas = 0;
-        // }
-
         $sql = "INSERT INTO
         `wali_calon_santri` (
-          `id_wali_calon_santri`,
-          `id_calon_istri`,
+          `id_calon_santri`,
           `nama`,
           `alamat`,
           `kota`,
@@ -45,8 +39,7 @@ class WaliCalonSantriModel extends CI_Model
         )
       VALUES
         (
-          '" . $data['id_wali_calon_santri'] . "',
-          '" . $data['id_calon_istri'] . "',
+          '" . $data['id_calon_santri'] . "',
           '" . $data['nama'] . "',
           '" . $data['alamat'] . "',
           '" . $data['kota'] . "',
@@ -59,25 +52,27 @@ class WaliCalonSantriModel extends CI_Model
         )";
         // $data['kapasitas']
         $status = $this->db->query($sql);
+        return $status;
 
-        if ($status) {
-            $sql = "SELECT LAST_INSERT_ID()";
-            $res = $this->db->query($sql);
-            $newId = $res->result_array();
-            $newId = $newId[0]['LAST_INSERT_ID()'];
-            return $this->getDataById($newId);
-        } else {
-            return false;
-        }
+        // if ($status) {
+        //     $sql = "SELECT LAST_INSERT_ID()";
+        //     $res = $this->db->query($sql);
+        //     $newId = $res->result_array();
+        //     $newId = $newId[0]['LAST_INSERT_ID()'];
+        //     return $this->getDataById($newId);
+        // } else {
+        //     return false;
+        // }
     }
 
     public function updateData($data){
-    //   $kapasitas = $data['kapasitas'];
-    //   if($kapasitas==""){
-    //     $kapasitas=0;
-    //   }
+      // $kapasitas = $data['kapasitas'];
+      // if($kapasitas==""){
+      //   $kapasitas=0;
+      // }
       $sql = "UPDATE `wali_calon_santri`
-              SET `id_calon_santri` = '".$data['id_calon_santri']."',
+              SET 
+                  `id_calon_santri` = '".$data['id_calon_santri']."',
                   `nama` = '".$data['nama']."',
                   `alamat` = '".$data['alamat']."',
                   `kota` = '".$data['kota']."',
@@ -85,8 +80,8 @@ class WaliCalonSantriModel extends CI_Model
                   `telepon` = '".$data['telepon']."',
                   `pekerjaan` = '".$data['pekerjaan']."',
                   `no_ktp` = '".$data['no_ktp']."',
-                  `gender` = '".$data['gender']."'
-                  `hubungan` = '".$data['hubungan']."',
+                  `gender` = '".$data['gender']."',
+                  `hubungan` = '".$data['hubungan']."'
               WHERE id_wali_calon_santri = ".$data['id_wali_calon_santri']."";
 
       $status = $this->db->query($sql);
@@ -94,21 +89,28 @@ class WaliCalonSantriModel extends CI_Model
       return $status;
     }
 
-    // public function getDataById($id)
-    // {
-    //     $sql = "SELECT
-    //     r.*,
-    //     jr.nama AS nama_jenis_ruangan
-    //   FROM
-    //     ruangan r
-    //     JOIN jenis_ruangan jr ON jr.id_jenis_ruangan = r.id_jenis_ruangan
-    //     WHERE r.id_ruangan = " . $id . "";
-    //     $res = $this->db->query($sql);
-    //     return $res->result_array()[0];
-    // }
+    public function getDataById($id)
+    {
+        $sql2 = "SELECT * 
+                FROM 
+                  wali_calon_santri 
+                WHERE 
+                  id_wali_calon_santri = ".$id."";
+        $sql = "SELECT
+        u.*,
+        r.nama AS nama_role
+      FROM
+        user u
+        JOIN role r ON r.id_role = u.id_role
+        WHERE u.id_user = " . $id . "";
+        $res = $this->db->query($sql2);
 
-    public function hapusData($id_wali_calon_santri){
-      $sql = "DELETE FROM wali_calon_santri WHERE id_wali_calon_santri=".$id_wali_calon_santri."";
+        // print_r($res->result_array());
+        return $res->result_array()[0];
+    }
+
+    public function hapusData($id_user){
+      $sql = "DELETE FROM wali_calon_santri WHERE id_wali_calon_santri=".$id_user."";
       $res = $this->db->query($sql);
       return $res;
     }

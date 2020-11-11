@@ -7,7 +7,7 @@ class WaliCalonSantri extends CI_Controller
     // public function __construct()
     // {
     //     parent::__construct();
-    //     $this->load->model('RuanganModel');
+    //     $this->load->model('WaliCalonSantriModel');
     // }
     public function index()
     {
@@ -15,31 +15,32 @@ class WaliCalonSantri extends CI_Controller
     }
     public function getListTabel()
     {
-        $listJenisRuangan = $this->RuanganModel->getListTabel();
+        $listJenisRuangan = $this->WaliCalonSantriModel->getListTabel();
         echo json_encode($listJenisRuangan);
     }
     public function getListTabelJoin()
     {
-        $listJenisRuangan = $this->RuanganModel->getListTabelJoin();
+        $listJenisRuangan = $this->WaliCalonSantriModel->getListTabelJoin();
         echo json_encode($listJenisRuangan);
     }
     public function simpanData()
     {
         $data = $_POST;
 
-        $id_ruangan = $_POST['id_ruangan'];
+        $id_wali_calon_santri = $_POST['id_wali_calon_santri'];
 
-        if($id_ruangan==''||!isset($id_ruangan)){
-            $data = $this->RuanganModel->insertData($data);
+        if($id_wali_calon_santri==''||!isset($id_wali_calon_santri)){
+            $data = $this->WaliCalonSantriModel->insertData($data);
         }
         else{
-            $data = $this->RuanganModel->updateData($data);
+            $data = $this->WaliCalonSantriModel->updateData($data);
             // print_r($data);
         }
+        // print_r($data);
         if ($data) {
             $status = 1;
             // close session
-            // $this->session->unset_userdata('sekolah_id');
+            // $this->session->unset_wali_calon_santridata('sekolah_id');
         } else {
             $status = 0;
         }
@@ -53,18 +54,19 @@ class WaliCalonSantri extends CI_Controller
     }
 
     public function hapusData(){
-        $id_ruangan = $_POST['id_ruangan'];
+        $id_wali_calon_santri = $_POST['id_wali_calon_santri'];
 
-        $status = $this->RuanganModel->hapusData($id_ruangan);
+        $status = $this->WaliCalonSantriModel->hapusData($id_wali_calon_santri);
 
         echo $status;
     }
 
     public function getDataById(){
-        $id_ruangan = $_POST['id_ruangan'];
+        $id_wali_calon_santri = $_POST['id_wali_calon_santri'];
 
-        $data = $this->RuanganModel->getDataById($id_ruangan);
+        $data = $this->WaliCalonSantriModel->getDataById($id_wali_calon_santri);
 
+        // print_r('p'.$id_wali_calon_santri);
         echo json_encode($data);
     }
 }
