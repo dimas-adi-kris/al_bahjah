@@ -1,0 +1,252 @@
+<!-- Tampilkan Data Table Ruangan -->
+
+<div class="card">
+	<div class="card-header">
+		<h3 class="card-title">Data Ruangan</h3>
+		<button id="btn-tambah-ruang" type="button" class="btn btn-success float-right" data-toggle="modal"
+			data-target="#modal-form-tambah-ruangan"><i class="fa fa-plus-square" aria-hidden="true"></i>Tambah Ruang</button>
+	</div>
+	<!-- /.card-header -->
+	<div class="card-body">
+		<table id="tabel-list-ruangan" class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>ID Berkas Upload</th>
+					<th>ID Calon Santri</th>
+					<th>Tanggal Upload</th>
+					<th>Nama Berkas</th>
+					<th>Lokasi Upload</th>
+					<th>Keterangan</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+	<!-- /.card-body -->
+</div>
+
+<!-- Modal Form -->
+<!-- Modal -->
+<div class="modal fade" id="modal-form-tambah-ruangan" tabindex="-1" aria-labelledby="ModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="ModalLabel">Tambah Ruangan</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<!-- Isi Form -->
+				<form id="form-tambah-ruangan">
+					<input type="text" id="id_berkas_upload" name="id_berkas_upload" hidden>
+					<div class="form-group">
+						<label for="exampleFormControlInput1">ID Calon Santri</label>
+						<input type="text" class="form-control" id="id_calon_santri" name="id_calon_santri">
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlInput1">Tanggal Upload</label>
+						<input type="text" class="form-control" id="tanggal_upload" name="tanggal_upload">
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlInput1">Upload Berkas</label>
+						<input type="file" class="form-control" id="nama_berkas" name="nama_berkas">
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlInput1">Lokasi Upload</label>
+						<input type="text" class="form-control" id="lokasi_upload" name="lokasi_upload">
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlInput1">Keterangan</label>
+						<input type="text" class="form-control" id="keterangan" name="keterangan">
+					</div>
+					<button id="summit-tambah" type="submit" class="btn btn-success">Tambah</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+
+          
+          		</form>
+			</div>
+			<!-- Penutup Form -->
+		</div>
+		<div class="modal-footer">
+			<!-- <button id="summit-tambah" type="submit" class="btn btn-success">Tambah</button> -->
+		</div>
+	</div>
+</div>
+</div>
+
+<script>
+$(document).ready(function () {
+	var tabelListRuangan = $('#tabel-list-ruangan').DataTable({
+		"paging": true,
+		"lengthChange": true,
+		"searching": false,
+		"ordering": true,
+		"info": true,
+		"autoWidth": false,
+		"responsive": true,
+		"columnDefs": [{
+				"width": "130px",
+				"targets": 5
+			},
+			{
+				"width": "30px",
+				"targets": 0
+			},
+			{
+				"className": "text-center",
+				"targets": [0, 3, 5]
+			},
+		]
+	});
+
+	renderTabelListRuangan();
+
+	function renderTabelListRuangan() {
+		tabelListRuangan.clear();
+		$.ajax({
+				method: "POST",
+				url: "<?= base_url() ?>index.php/Berkas_Upload/getListTabel",
+				data: {}
+			})
+			.done(function (msg) {
+				var res = JSON.parse(msg);
+				console.log(res);
+				for (i = 0; i < res.length; i++) {
+					$edit = '<button type="button" id_ruangan=' + res[i]['id_ruangan'] + ' class="btn bg-gradient-success btn-ubah" data-toggle="modal" data-target="#modal-form-tambah-ruangan"><i class="far fa-edit"></i>Edit</button>'
+					$hapus = '<button type="button" id_ruangan=' + res[i]['id_ruangan'] + ' class="btn btn-hapus bg-gradient-danger"><i class="far fa-trash-alt"></i>Delete</button>'
+					tabelListRuangan.row.add([
+						res[i]['id_berkas_upload'],
+						res[i]['id_calon_santri'],
+						res[i]['tanggal_upload'],
+						res[i]['nama_berkas'],
+                        res[i]['lokasi_upload'],
+                        res[i]['keterangan'],
+						$edit + $hapus,
+					]).draw(false);
+				}
+			});
+	}
+
+
+	function renderOptionJenisRuangan(currentValue) {
+		$("#id_jenis_ruangan")
+			.empty()
+			.append("<option selected='selected' value'0'>[pilih jenis ruangan]</option>");
+
+		$.ajax({
+				method: "POST",
+				url: "<?= base_url() ?>index.php/Berkas_Upload/getListTabel",
+				data: {}
+			})
+			.done(function (msg) {
+				var jenisRuangan = JSON.parse(msg);
+				// console.log(jenisRuangan);
+				$.each(jenisRuangan, function (key, value) {
+
+					if (currentValue == value['id_jenis_ruangan']) {
+						$("#id_jenis_ruangan")
+							.append($("<option selected='selected'></option>")
+							.attr("value", value['id_jenis_ruangan'])
+							.text(value['id_jenis_ruangan'] + ":" + value['nama']));
+
+					} else {
+						$("#id_jenis_ruangan")
+							.append($("<option></option>")
+								.attr("value", value['id_jenis_ruangan'])
+								.text(value['id_jenis_ruangan'] + ":" + value['nama']));
+
+					}
+				});
+			});
+	}
+	$("#btn-tambah-ruang").click(function () {
+		$("#id").val('');
+		$("#kode_ruangan").val('');
+		renderOptionJenisRuangan(0);
+		$("#kapasitas").val(0);
+		$("#lokasi").val('');
+	});
+
+	// Insert Data
+	$("#form-tambah-ruangan").submit(function () {
+		// alert('True');
+		event.preventDefault();
+		var formData = $(this).serialize();
+		$.ajax({
+				method: "POST",
+				url: "<?= base_url() ?>index.php/Berkas_Upload/simpanData",
+				data: formData
+			})
+			.done(function (msg) {
+				// console.log(msg);
+				var res = JSON.parse(msg);
+				var data = res['data'];
+				// console.log(data);
+
+				if (res['status'] == 1 || res['status'] == "1") {
+					alert("Data berhasil disimpan");
+					$("#modal-form-tambah-ruangan").modal("hide");
+					renderTabelListRuangan();
+				} else if (res['status'] == 0 || res['status'] == "0") {
+					alert("Data tidak berhasil disimpan");
+					$("#modal-form-tambah-ruangan").modal("hide");
+				} else {
+					console.log(msg);
+				}
+			});
+	});
+
+	$('#tabel-list-ruangan').on('click', '.btn-hapus', function () {
+		var id_ruangan = $(this).attr('id_ruangan');
+		if (confirm("Apakah data ini akan dihapus?")) {
+			$.ajax({
+					method: "POST",
+					url: "<?=base_url()?>index.php/Berkas_Upload/hapusData",
+					data: {
+						id_ruangan: id_ruangan
+					}
+				})
+				.done(function (msg) {
+					if (msg == 'true' || msg) {
+						alert('data telah dihapus');
+						renderTabelListRuangan();
+					} else {
+						alert('data gagal dihapus, err', msg);
+					}
+				});
+		}
+	});
+
+	$('#tabel-list-ruangan').on('click', '.btn-ubah', function () {
+		var id_ruangan = $(this).attr('id_ruangan');
+		$.ajax({
+				method: "POST",
+				url: "<?=base_url()?>index.php/Berkas_Upload/getDataById",
+				data: {
+					id_ruangan: id_ruangan
+				}
+			})
+			.done(function (msg) {
+				// console.log(msg);
+				var res = JSON.parse(msg);
+				var id_jenis_ruangan = res['id_jenis_ruangan'];
+				var lokasi = res['lokasi'];
+				console.log(id_jenis_ruangan);
+				$("#id_ruangan").val(res['id_ruangan']);
+				$("#kode_ruangan").val(res['kode_ruangan']);
+				renderOptionJenisRuangan(id_jenis_ruangan);
+				$("#kapasitas").val(res['kapasitas']);
+				$("#lokasi").val(lokasi);
+
+				$("#summit-tambah").text('Ubah');
+				$("#ModalLabel").text('Ubah Ruangan');
+			});
+
+	});
+});
+
+</script>

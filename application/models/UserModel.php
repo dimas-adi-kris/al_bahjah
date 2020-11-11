@@ -2,21 +2,25 @@
 class UserModel extends CI_Model
 {
 
-    public function getListUser()
+    public function getListTabel()
     {
-        $sql = "SELECT * FROM user";
+        $sql = "SELECT * FROM role";
         $res = $this->db->query($sql);
         return $res->result_array();
     }
 
+<<<<<<< Updated upstream
     public function getListUser()
+=======
+    public function getListTabelJoin()
+>>>>>>> Stashed changes
     {
         $sql = "SELECT
         u.*,
         r.nama AS nama_role
       FROM
         user u
-        JOIN role r ON r.id_role = u.id_role
+        JOIN `role` r ON r.id_role = u.id_role
       ";
         $res = $this->db->query($sql);
         return $res->result_array();
@@ -26,7 +30,6 @@ class UserModel extends CI_Model
     {
         $sql = "INSERT INTO
         `user` (
-          `id_user`,
           `id_role`,
           `password`,
           `nama`,
@@ -34,7 +37,6 @@ class UserModel extends CI_Model
         )
       VALUES
         (
-          '" . $data['id_user'] . "',
           '" . $data['id_role'] . "',
           '" . $data['password'] . "',
           '" . $data['nama'] . "',
@@ -42,16 +44,17 @@ class UserModel extends CI_Model
         )";
         // $data['kapasitas']
         $status = $this->db->query($sql);
+        return $status;
 
-        if ($status) {
-            $sql = "SELECT LAST_INSERT_ID()";
-            $res = $this->db->query($sql);
-            $newId = $res->result_array();
-            $newId = $newId[0]['LAST_INSERT_ID()'];
-            return $this->getDataById($newId);
-        } else {
-            return false;
-        }
+        // if ($status) {
+        //     $sql = "SELECT LAST_INSERT_ID()";
+        //     $res = $this->db->query($sql);
+        //     $newId = $res->result_array();
+        //     $newId = $newId[0]['LAST_INSERT_ID()'];
+        //     return $this->getDataById($newId);
+        // } else {
+        //     return false;
+        // }
     }
 
     public function updateData($data){
@@ -80,8 +83,10 @@ class UserModel extends CI_Model
       FROM
         user u
         JOIN role r ON r.id_role = u.id_role
-        WHERE u.id_role = " . $id . "";
+        WHERE u.id_user = " . $id . "";
         $res = $this->db->query($sql);
+
+        // print_r($res->result_array());
         return $res->result_array()[0];
     }
 
