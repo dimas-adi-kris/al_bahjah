@@ -9,20 +9,6 @@ class PembayaranModel extends CI_Model
         return $res->result_array();
     }
 
-<<<<<<< Updated upstream
-    // public function getListRuangan()
-    // {
-    //     $sql = "SELECT
-    //     r.*,
-    //     jr.nama AS nama_jenis_ruangan
-    //   FROM
-    //     ruangan r
-    //     JOIN jenis_ruangan jr ON jr.id_jenis_ruangan = r.id_jenis_ruangan
-    //   ";
-    //     $res = $this->db->query($sql);
-    //     return $res->result_array();
-    // }
-=======
     public function getListTabelJoin()
     {
         $sql = "SELECT
@@ -35,7 +21,6 @@ class PembayaranModel extends CI_Model
         $res = $this->db->query($sql);
         return $res->result_array();
     }
->>>>>>> Stashed changes
 
     public function insertData($data)
     {

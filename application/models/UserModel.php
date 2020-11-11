@@ -9,11 +9,7 @@ class UserModel extends CI_Model
         return $res->result_array();
     }
 
-<<<<<<< Updated upstream
-    public function getListUser()
-=======
     public function getListTabelJoin()
->>>>>>> Stashed changes
     {
         $sql = "SELECT
         u.*,
@@ -66,7 +62,7 @@ class UserModel extends CI_Model
               SET 
                   `id_role` = '".$data['id_role']."',
                   `password` = '".$data['password']."',
-                  `nama` = '".$data['nama'].,
+                  `nama` = '".$data['nama']."',
                   `email` = '".$data['email']."'
               WHERE id_user = ".$data['id_user']."";
 
