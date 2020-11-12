@@ -49,11 +49,19 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Tanggal Upload</label>
-						<input type="text" class="form-control" id="tanggal_upload" name="tanggal_upload">
+						<input type="datetime-local" class="form-control" id="tanggal_upload" name="tanggal_upload">
 					</div>
-					<div class="form-group">
-						<label for="exampleFormControlInput1">Upload Berkas</label>
-						<input type="file" class="form-control" id="nama_berkas" name="nama_berkas">
+					<div class="form-group">						
+						<label>Nama Berkas</label>
+                        <select class="form-control" id="nama_berkas" name="nama_berkas">
+							<option value="FOTO">FOTO</option>
+							<option value="KTP">KTP</option>
+							<option value="KK">KK</option>
+							<option value="AKTE KELAHIRAN">AKTE KELAHIRAN</option>
+							<option value="RAPOT">RAPOT</option>
+							<option value="IJAZAH">IJAZAH</option>
+							<option value="BUKTI PEMBAYARAN">BUKTI PEMBAYARAN</option>
+						</select>
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Lokasi Upload</label>
@@ -109,15 +117,15 @@ $(document).ready(function () {
 		tabelListRuangan.clear();
 		$.ajax({
 				method: "POST",
-				url: "<?= base_url() ?>index.php/Berkas_Upload/getListTabel",
+				url: "<?= base_url() ?>index.php/BerkasUpload/getListTabel",
 				data: {}
 			})
 			.done(function (msg) {
 				var res = JSON.parse(msg);
 				console.log(res);
 				for (i = 0; i < res.length; i++) {
-					$edit = '<button type="button" id_ruangan=' + res[i]['id_ruangan'] + ' class="btn bg-gradient-success btn-ubah" data-toggle="modal" data-target="#modal-form-tambah-ruangan"><i class="far fa-edit"></i>Edit</button>'
-					$hapus = '<button type="button" id_ruangan=' + res[i]['id_ruangan'] + ' class="btn btn-hapus bg-gradient-danger"><i class="far fa-trash-alt"></i>Delete</button>'
+					$edit = '<button type="button" id_berkas_upload=' + res[i]['id_berkas_upload'] + ' class="btn bg-gradient-success btn-ubah" data-toggle="modal" data-target="#modal-form-tambah-ruangan"><i class="far fa-edit"></i>Edit</button>'
+					$hapus = '<button type="button" id_berkas_upload=' + res[i]['id_berkas_upload'] + ' class="btn btn-hapus bg-gradient-danger"><i class="far fa-trash-alt"></i>Delete</button>'
 					tabelListRuangan.row.add([
 						res[i]['id_berkas_upload'],
 						res[i]['id_calon_santri'],
@@ -132,41 +140,9 @@ $(document).ready(function () {
 	}
 
 
-	function renderOptionJenisRuangan(currentValue) {
-		$("#id_jenis_ruangan")
-			.empty()
-			.append("<option selected='selected' value'0'>[pilih jenis ruangan]</option>");
-
-		$.ajax({
-				method: "POST",
-				url: "<?= base_url() ?>index.php/Berkas_Upload/getListTabel",
-				data: {}
-			})
-			.done(function (msg) {
-				var jenisRuangan = JSON.parse(msg);
-				// console.log(jenisRuangan);
-				$.each(jenisRuangan, function (key, value) {
-
-					if (currentValue == value['id_jenis_ruangan']) {
-						$("#id_jenis_ruangan")
-							.append($("<option selected='selected'></option>")
-							.attr("value", value['id_jenis_ruangan'])
-							.text(value['id_jenis_ruangan'] + ":" + value['nama']));
-
-					} else {
-						$("#id_jenis_ruangan")
-							.append($("<option></option>")
-								.attr("value", value['id_jenis_ruangan'])
-								.text(value['id_jenis_ruangan'] + ":" + value['nama']));
-
-					}
-				});
-			});
-	}
 	$("#btn-tambah-ruang").click(function () {
 		$("#id").val('');
 		$("#kode_ruangan").val('');
-		renderOptionJenisRuangan(0);
 		$("#kapasitas").val(0);
 		$("#lokasi").val('');
 	});
@@ -178,7 +154,7 @@ $(document).ready(function () {
 		var formData = $(this).serialize();
 		$.ajax({
 				method: "POST",
-				url: "<?= base_url() ?>index.php/Berkas_Upload/simpanData",
+				url: "<?= base_url() ?>index.php/BerkasUpload/simpanData",
 				data: formData
 			})
 			.done(function (msg) {
@@ -201,13 +177,13 @@ $(document).ready(function () {
 	});
 
 	$('#tabel-list-ruangan').on('click', '.btn-hapus', function () {
-		var id_ruangan = $(this).attr('id_ruangan');
+		var id_berkas_upload = $(this).attr('id_berkas_upload');
 		if (confirm("Apakah data ini akan dihapus?")) {
 			$.ajax({
 					method: "POST",
-					url: "<?=base_url()?>index.php/Berkas_Upload/hapusData",
+					url: "<?=base_url()?>index.php/BerkasUpload/hapusData",
 					data: {
-						id_ruangan: id_ruangan
+						id_berkas_upload: id_berkas_upload
 					}
 				})
 				.done(function (msg) {
@@ -222,25 +198,23 @@ $(document).ready(function () {
 	});
 
 	$('#tabel-list-ruangan').on('click', '.btn-ubah', function () {
-		var id_ruangan = $(this).attr('id_ruangan');
+		var id_berkas_upload = $(this).attr('id_berkas_upload');
 		$.ajax({
 				method: "POST",
-				url: "<?=base_url()?>index.php/Berkas_Upload/getDataById",
+				url: "<?=base_url()?>index.php/BerkasUpload/getDataById",
 				data: {
-					id_ruangan: id_ruangan
+					id_berkas_upload: id_berkas_upload
 				}
 			})
 			.done(function (msg) {
 				// console.log(msg);
 				var res = JSON.parse(msg);
-				var id_jenis_ruangan = res['id_jenis_ruangan'];
-				var lokasi = res['lokasi'];
-				console.log(id_jenis_ruangan);
-				$("#id_ruangan").val(res['id_ruangan']);
-				$("#kode_ruangan").val(res['kode_ruangan']);
-				renderOptionJenisRuangan(id_jenis_ruangan);
-				$("#kapasitas").val(res['kapasitas']);
-				$("#lokasi").val(lokasi);
+				$("#id_berkas_upload").val(res['id_berkas_upload']);
+				$("#id_calon_santri").val(res['id_calon_santri']);
+				$("#tanggal_upload").val(res['tanggal_upload']);
+				$("#nama_berkas").val(res['nama_berkas']);
+				$("#lokasi_upload").val(res['lokasi_upload']);
+				$("#keterangan").val(res['keterangan']);
 
 				$("#summit-tambah").text('Ubah');
 				$("#ModalLabel").text('Ubah Ruangan');

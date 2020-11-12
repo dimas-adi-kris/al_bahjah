@@ -50,26 +50,12 @@ class WaliCalonSantriModel extends CI_Model
           '" . $data['gender'] . "',
           '" . $data['hubungan'] . "'
         )";
-        // $data['kapasitas']
         $status = $this->db->query($sql);
         return $status;
 
-        // if ($status) {
-        //     $sql = "SELECT LAST_INSERT_ID()";
-        //     $res = $this->db->query($sql);
-        //     $newId = $res->result_array();
-        //     $newId = $newId[0]['LAST_INSERT_ID()'];
-        //     return $this->getDataById($newId);
-        // } else {
-        //     return false;
-        // }
     }
 
     public function updateData($data){
-      // $kapasitas = $data['kapasitas'];
-      // if($kapasitas==""){
-      //   $kapasitas=0;
-      // }
       $sql = "UPDATE `wali_calon_santri`
               SET 
                   `id_calon_santri` = '".$data['id_calon_santri']."',
@@ -96,13 +82,6 @@ class WaliCalonSantriModel extends CI_Model
                   wali_calon_santri 
                 WHERE 
                   id_wali_calon_santri = ".$id."";
-        $sql = "SELECT
-        u.*,
-        r.nama AS nama_role
-      FROM
-        user u
-        JOIN role r ON r.id_role = u.id_role
-        WHERE u.id_user = " . $id . "";
         $res = $this->db->query($sql2);
 
         // print_r($res->result_array());

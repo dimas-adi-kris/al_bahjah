@@ -272,6 +272,33 @@
                 <p>Wali Calon Santri</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="menu-calon-santri">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Calon Santri</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="menu-jadwal-ujian">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Jadwal Ujian</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="menu-jadwal-ujian-calon-santri">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Jadwal Ujian Calon Santri</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="menu-hasil-kelulusan">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Hasil Kelulusan</p>
+              </a>
+            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -393,7 +420,7 @@
     
     $("#berkas_upload").click(function(){
       $("#title-page").html("<br>Berkas Upload</br>");
-      $("#main-content").load("<?= base_url() ?>index.php/Berkas_Upload/index");
+      $("#main-content").load("<?= base_url() ?>index.php/berkasupload/index");
     });
     
     $("#operator").click(function(){
@@ -420,19 +447,25 @@
       $("#title-page").html("<br>Wali Calon Santri</br>");
       $("#main-content").load("<?= base_url() ?>index.php/WaliCalonSantri/index");
     });
-    
-    // $.ajax({
-    //     method: "POST",
-    //     url: "<?= base_url() ?>index.php/Profil/getDataProfil/1",
-    //     data: {}
-    //   })
-    //   .done(function(msg) {
-    //     var sekolah = JSON.parse(msg);
-    //     $("#label_nama_lengkap_sekolah").text(sekolah['nama_lengkap']);
-    //     $("#label_nama_singkatan").html(sekolah['singkatan']);
-    //     $("#label_alamat").html(sekolah['alamat']);
-    //     $("#label_telepon").html(sekolah['telepon']);
-    //     $("#label_email").html(sekolah['email'])
-    //   });
+    $("#menu-calon-santri").click(function() {
+      $("#title-page").text("CALON SANTRI");
+      $("#main-content").load("<?= base_url() ?>index.php/CalonSantri/index");
+
+    });
+
+    $("#menu-jadwal-ujian").click(function() {
+      $("#title-page").html("<br>Jadwal Ujian</br>");
+      $("#main-content").load("<?= base_url() ?>index.php/JadwalUjian/index");
+    });
+
+    $("#menu-jadwal-ujian-calon-santri").click(function() {
+      $("#title-page").html("<br>Jadwal Ujian Calon Santri</br>");
+      $("#main-content").load("<?= base_url() ?>index.php/JadwalUjianCalonSantri/index");
+    });
+
+    $("#menu-hasil-kelulusan").click(function() {
+      $("#title-page").html("<br>Hasil Kelulusan</br>");
+      $("#main-content").load("<?= base_url() ?>index.php/HasilKelulusan/index");
+    });
   });
 </script>

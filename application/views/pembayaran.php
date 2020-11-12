@@ -14,12 +14,10 @@
 					<th>No</th>
 					<th>Tanggal Pembayaran</th>
 					<th>Bukti Pembayaran</th>
-					<th>Nama Calon Santri</th>
 					<th>Tanggal Lahir</th>
 					<th>Status Verifikasi</th>
 					<th>ID Bendahara</th>
 					<th>OTP Pembayaran</th>
-					<th>Tanggal Lahir</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -48,17 +46,11 @@
 					<input type="text" id="id_pembayaran" name="id_pembayaran" hidden>
 					<div class="form-group">
 						<label>Tanggal Pembayaran</label>
-						<input type="text" class="form-control" id="kode_ruangan" name="kode_ruangan" placeholder="AAABBB">
+                        <input type="datetime-local" class="form-control" name="tanggal_pembayaran" id="tanggal_pembayaran">
 					</div>
 					<div class="form-group">
 						<label>Bukti Pembayaran</label>
-						<select class="form-control" id="bukti_pembayaran" name="bukti_pembayaran">
-							<!-- Isi Option -->
-						</select>
-					</div>
-					<div class="form-group">
-						<label>Nama Calon Santri</label>
-						<input type="text" class="form-control" id="nama_calon_santri" name="nama_calon_santri" placeholder="Nama Calon Santri">
+						<input type="text" class="form-control" id="bukti_pembayaran" name="bukti_pembayaran">
 					</div>
 					<div class="form-group">
 						<label>Tanggal Lahir</label>
@@ -66,7 +58,10 @@
 					</div>
 					<div class="form-group">
 						<label>Status Verifikasi</label>
-                        <input type="checkbox" class="form-control" name="status_verifikasi" id="status_verifikasi">
+                        <select class="form-control" id="status_verifikasi" name="status_verifikasi">
+							<option value="BELUM">BELUM</option>
+							<option value="TERVERIFIKASI">TERVERIFIKASI</option>
+						</select>
 					</div>
 					<div class="form-group">
 						<label>ID Bendahara</label>
@@ -122,67 +117,38 @@ $(document).ready(function () {
 		tabelListRuangan.clear();
 		$.ajax({
 				method: "POST",
-				url: "<?= base_url() ?>index.php/Pembayaran/getListTabelJoin",
+				url: "<?= base_url() ?>index.php/Pembayaran/getListTabel",
 				data: {}
 			})
 			.done(function (msg) {
 				var res = JSON.parse(msg);
 				console.log(res);
-				// $edit = '<button type="button" class="btn bg-gradient-success">Success</button>'
-				// $hapus = '<button type="button" class="btn btn-hapus bg-gradient-danger">Danger</button>'
 				for (i = 0; i < res.length; i++) {
 					$edit = '<button type="button" id_pembayaran=' + res[i]['id_pembayaran'] + ' class="btn bg-gradient-success btn-ubah" data-toggle="modal" data-target="#modal-form-tambah-ruangan"><i class="far fa-edit"></i>Edit</button>'
 					$hapus = '<button type="button" id_pembayaran=' + res[i]['id_pembayaran'] + ' class="btn btn-hapus bg-gradient-danger"><i class="far fa-trash-alt"></i>Delete</button>'
 					tabelListRuangan.row.add([
-						i + 1,
-						res[i]['kode_ruangan'],
-						res[i]['nama_jenis_ruangan'],
-						res[i]['nama_calon_santri'],
-						res[i]['lokasi'],
-						$edit + $hapus,
+						res[i]['id_pembayaran'],
+						res[i]['tanggal_pembayaran'],
+						res[i]['bukti_pembayaran'],
+						res[i]['tanggal_lahir'],
+						res[i]['status_verifikasi'],
+						res[i]['id_bendahara'],
+						res[i]['otp_pembayaran'],
+						$edit + $hapus
 					]).draw(false);
 				}
 			});
 	}
 
 
-	function renderOptionJenisRuangan(currentValue) {
-		$("#bukti_pembayaran")
-			.empty()
-			.append("<option selected='selected' value'0'>[pilih Bukti Pembayaran]</option>");
-
-		$.ajax({
-				method: "POST",
-				url: "<?= base_url() ?>index.php/Pembayaran/getListTabel",
-				data: {}
-			})
-			.done(function (msg) {
-				var jenisRuangan = JSON.parse(msg);
-				// console.log(jenisRuangan);
-				$.each(jenisRuangan, function (key, value) {
-
-					if (currentValue == value['bukti_pembayaran']) {
-						$("#bukti_pembayaran")
-							.append($("<option selected='selected'></option>")
-							.attr("value", value['bukti_pembayaran'])
-							.text(value['bukti_pembayaran'] + ":" + value['nama']));
-
-					} else {
-						$("#bukti_pembayaran")
-							.append($("<option></option>")
-								.attr("value", value['bukti_pembayaran'])
-								.text(value['bukti_pembayaran'] + ":" + value['nama']));
-
-					}
-				});
-			});
-	}
 	$("#btn-tambah-ruang").click(function () {
-		$("#id").val('');
-		$("#kode_ruangan").val('');
-		renderOptionJenisRuangan(0);
-		$("#nama_calon_santri").val(0);
-		$("#lokasi").val('');
+        $("#ModalLabel").text('Tambah User');
+        $("#summit-tambah").text('Tambah');
+		$("#id_pembayaran").val('');
+		$("#alamat").val('');
+		// renderOptionJenisRuangan(0);
+		$("#nama").val('');
+		$("#email").val('');
 	});
 
 	// Insert Data
@@ -203,11 +169,11 @@ $(document).ready(function () {
 
 				if (res['status'] == 1 || res['status'] == "1") {
 					alert("Data berhasil disimpan");
-					$("#modal-form-tambah-ruangan").modal("hide");
+					$("#modal-form-tambah-user").modal("hide");
 					renderTabelListRuangan();
 				} else if (res['status'] == 0 || res['status'] == "0") {
 					alert("Data tidak berhasil disimpan");
-					$("#modal-form-tambah-ruangan").modal("hide");
+					$("#modal-form-tambah-user").modal("hide");
 				} else {
 					console.log(msg);
 				}
@@ -245,16 +211,18 @@ $(document).ready(function () {
 				}
 			})
 			.done(function (msg) {
-				// console.log(msg);
-				var res = JSON.parse(msg);
-				var bukti_pembayaran = res['bukti_pembayaran'];
-				var lokasi = res['lokasi'];
-				console.log(bukti_pembayaran);
+                console.log("check1");
+				console.log(msg);
+                console.log("check1");
+                var res = JSON.parse(msg);
 				$("#id_pembayaran").val(res['id_pembayaran']);
-				$("#kode_ruangan").val(res['kode_ruangan']);
-				renderOptionJenisRuangan(bukti_pembayaran);
-				$("#nama_calon_santri").val(res['nama_calon_santri']);
-				$("#lokasi").val(lokasi);
+                $("#tanggal_pembayaran").val(res['tanggal_pembayaran']);
+				$("#bukti_pembayaran").val(res['bukti_pembayaran']);
+                $("#tanggal_lahir").val(res['tanggal_lahir']);
+                $("#status_verifikasi").val(res['status_verifikasi']);
+                $("#id_bendahara").val(res['id_bendahara']);
+                $("#otp_pembayaran").val(res['otp_pembayaran']);
+                $("#pekerjaan").val(res['pekerjaan']);
 
 				$("#summit-tambah").text('Ubah');
 				$("#ModalLabel").text('Ubah Ruangan');

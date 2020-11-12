@@ -24,17 +24,11 @@ class PembayaranModel extends CI_Model
 
     public function insertData($data)
     {
-        $kapasitas = $data['kapasitas'];
-        if ($kapasitas == "") {
-            $kapasitas = 0;
-        }
-
         $sql = "INSERT INTO
         `pembayaran` (
           `id_pembayaran`,
           `tanggal_pembayaran`,
           `bukti_pembayaran`,
-          `nama_calon_santri`,
           `tanggal_lahir`,
           `status_verifikasi`,
           `id_bendahara`,
@@ -45,13 +39,11 @@ class PembayaranModel extends CI_Model
           '" . $data['id_pembayaran']. "',
           '" . $data['tanggal_pembayaran']. "',
           '" . $data['bukti_pembayaran']. "',
-          '" . $data['nama_calon_santri']. "',
           '" . $data['tanggal_lahir']. "',
           '" . $data['status_verifikasi']. "',
           '" . $data['id_bendahara']. "',
           '" . $data['otp_pembayaran']. "'
         )";
-        // $data['kapasitas']
         $status = $this->db->query($sql);
 
         if ($status) {
@@ -63,23 +55,19 @@ class PembayaranModel extends CI_Model
         } else {
             return false;
         }
+        return $status;
     }
 
     public function updateData($data){
-      $kapasitas = $data['kapasitas'];
-      if($kapasitas==""){
-        $kapasitas=0;
-      }
+
       $sql = "UPDATE `pembayaran`
-              SET `id_pembayaran` = '".$data['id_pembayaran']."',
-                   `tanggal_pembayaran` = '".$data['tanggal_pembayaran']."',
+              SET `tanggal_pembayaran` = '".$data['tanggal_pembayaran']."',
                    `bukti_pembayaran` = '".$data['bukti_pembayaran']."',
-                   `nama_calon_santri` = '".$data['nama_calon_santri']."',
                    `tanggal_lahir` = '".$data['tanggal_lahir']."',
                    `status_verifikasi` = '".$data['status_verifikasi']."',
                    `id_bendahara` = '".$data['id_bendahara']."',
                    `otp_pembayaran` = '".$data['otp_pembayaran']."'
-              WHERE id_ruangan = ".$data['id_ruangan']."";
+              WHERE id_pembayaran = ".$data['id_pembayaran']."";
 
       $status = $this->db->query($sql);
 
@@ -88,19 +76,17 @@ class PembayaranModel extends CI_Model
 
     public function getDataById($id)
     {
-        $sql = "SELECT
-        r.*,
-        jr.nama AS nama_jenis_ruangan
-      FROM
-        ruangan r
-        JOIN jenis_ruangan jr ON jr.id_jenis_ruangan = r.id_jenis_ruangan
-        WHERE r.id_ruangan = " . $id . "";
-        $res = $this->db->query($sql);
-        return $res->result_array()[0];
+        $sql2 = "SELECT * 
+      FROM 
+        pembayaran 
+      WHERE 
+        id_pembayaran = ".$id."";
+      $res = $this->db->query($sql2);
+      return $res->result_array()[0];
     }
 
     public function hapusData($id_ruangan){
-      $sql = "DELETE FROM pembayaran WHERE id_ruangan=".$id_ruangan."";
+      $sql = "DELETE FROM pembayaran WHERE id_pembayaran=".$id_ruangan."";
       $res = $this->db->query($sql);
       return $res;
     }

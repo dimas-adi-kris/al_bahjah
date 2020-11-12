@@ -1,39 +1,39 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pembayaran extends CI_Controller
+class BerkasUpload extends CI_Controller
 {
 
     // public function __construct()
     // {
     //     parent::__construct();
-    //     $this->load->model('PembayaranModel');
+    //     $this->load->model('BerkasUploadModel');
     // }
     public function index()
     {
-        $this->load->view('pembayaran');
+        $this->load->view('berkasupload');
     }
     public function getListTabel()
     {
-        $listJenisRuangan = $this->PembayaranModel->getListTabel();
+        $listJenisRuangan = $this->BerkasUploadModel->getListTabel();
         echo json_encode($listJenisRuangan);
     }
     public function getListTabelJoin()
     {
-        $listJenisRuangan = $this->PembayaranModel->getListTabelJoin();
+        $listJenisRuangan = $this->BerkasUploadModel->getListTabelJoin();
         echo json_encode($listJenisRuangan);
     }
     public function simpanData()
     {
         $data = $_POST;
 
-        $id_pembayaran = $_POST['id_pembayaran'];
+        $id_berkas_upload = $_POST['id_berkas_upload'];
 
-        if($id_pembayaran==''||!isset($id_pembayaran)){
-            $data = $this->PembayaranModel->insertData($data);
+        if($id_berkas_upload==''||!isset($id_berkas_upload)){
+            $data = $this->BerkasUploadModel->insertData($data);
         }
         else{
-            $data = $this->PembayaranModel->updateData($data);
+            $data = $this->BerkasUploadModel->updateData($data);
             // print_r($data);
         }
         if ($data) {
@@ -53,17 +53,17 @@ class Pembayaran extends CI_Controller
     }
 
     public function hapusData(){
-        $id_pembayaran = $_POST['id_pembayaran'];
+        $id_berkas_upload = $_POST['id_berkas_upload'];
 
-        $status = $this->PembayaranModel->hapusData($id_pembayaran);
+        $status = $this->BerkasUploadModel->hapusData($id_berkas_upload);
 
         echo $status;
     }
 
     public function getDataById(){
-        $id_pembayaran = $_POST['id_pembayaran'];
+        $id_berkas_upload = $_POST['id_berkas_upload'];
 
-        $data = $this->PembayaranModel->getDataById($id_pembayaran);
+        $data = $this->BerkasUploadModel->getDataById($id_berkas_upload);
 
         echo json_encode($data);
     }
