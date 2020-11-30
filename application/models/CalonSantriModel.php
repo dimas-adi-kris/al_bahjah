@@ -12,11 +12,11 @@ class CalonSantriModel extends CI_Model
 
 
   // FUNGSI DIBAWAH INI YANG DIPAKE UNTUK JOIN 3 TABEL
-  public function getTabelJoin()
+  public function getTabelJoinCalonSantri()
   {
     $sql = "SELECT * 
-            FROM wali_calon_santri wcs, calon_santri cs, berkas_upload bu
-            WHERE wcs.id_calon_santri = cs.id_calon_santri and wcs.id_calon_santri = bu.id_calon_santri
+            FROM `wali_calon_santri` wcs, `calon_santri` cs, `berkas_upload` bu
+            WHERE wcs.id_calon_santri = cs.id_calon_santri AND wcs.id_calon_santri = bu.id_calon_santri
               ";
     
     $res = $this->db->query($sql);
@@ -26,7 +26,17 @@ class CalonSantriModel extends CI_Model
   // FUNGSI DIATAS INI YANG DIPAKE UNTUK JOIN 3 
   
   
-  
+  public function getTabelJoinProgram()
+  {
+    $sql = "SELECT * 
+            FROM calon_santri cs, program pr, periode pe
+            WHERE cs.id_program = pr.id_program and cs.id_program = pe.id_program
+              ";
+    
+    $res = $this->db->query($sql);
+    return $res->result_array();
+
+  }
     public function tambahCalonSantri($data)
   {
     $sql = "INSERT INTO

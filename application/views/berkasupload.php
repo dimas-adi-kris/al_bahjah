@@ -65,7 +65,7 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Lokasi Upload</label>
-						<input type="text" class="form-control" id="lokasi_upload" name="lokasi_upload">
+						<input type="file" class="form-control" id="lokasi_upload" name="lokasi_upload">
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Keterangan</label>
@@ -111,6 +111,15 @@ $(document).ready(function () {
 		]
 	});
 
+	var fullPath = document.getElementById('#lokasi_upload').value;
+	if (fullPath) {
+		var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+		var filename = fullPath.substring(startIndex);
+		if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+			filename = filename.substring(1);
+		}
+		alert(filename);
+	}
 	renderTabelListRuangan();
 
 	function renderTabelListRuangan() {
@@ -124,7 +133,8 @@ $(document).ready(function () {
 				var res = JSON.parse(msg);
 				console.log(res);
 				for (i = 0; i < res.length; i++) {
-					$edit = '<button type="button" id_berkas_upload=' + res[i]['id_berkas_upload'] + ' class="btn bg-gradient-success btn-ubah" data-toggle="modal" data-target="#modal-form-tambah-ruangan"><i class="far fa-edit"></i>Edit</button>'
+					$upload = '<button type="button" id_berkas_upload=' + res[i]['id_berkas_upload'] + ' class="btn bg-gradient-success btn-upload" data-toggle="modal" data-target="#modal-form-tambah-ruangan"><i class="far fa-edit"></i>Edit</button>'
+					$edit = '<button type="button" id_berkas_upload=' + res[i]['id_berkas_upload'] + ' class="btn bg-gradient-success btn-upload" data-toggle="modal" data-target="#modal-form-tambah-ruangan"><i class="far fa-edit"></i>Edit</button>'
 					$hapus = '<button type="button" id_berkas_upload=' + res[i]['id_berkas_upload'] + ' class="btn btn-hapus bg-gradient-danger"><i class="far fa-trash-alt"></i>Delete</button>'
 					tabelListRuangan.row.add([
 						res[i]['id_berkas_upload'],

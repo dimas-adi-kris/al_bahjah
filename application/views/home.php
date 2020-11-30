@@ -189,6 +189,12 @@
                 <p>PROFILE</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" id="login">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Login</p>
+              </a>
+            </li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-circle"></i>
@@ -450,22 +456,22 @@
     $("#menu-calon-santri").click(function() {
       $("#title-page").text("CALON SANTRI");
       $("#main-content").load("<?= base_url() ?>index.php/CalonSantri/index");
-
     });
-
     $("#menu-jadwal-ujian").click(function() {
       $("#title-page").html("<br>Jadwal Ujian</br>");
       $("#main-content").load("<?= base_url() ?>index.php/JadwalUjian/index");
     });
-
     $("#menu-jadwal-ujian-calon-santri").click(function() {
       $("#title-page").html("<br>Jadwal Ujian Calon Santri</br>");
       $("#main-content").load("<?= base_url() ?>index.php/JadwalUjianCalonSantri/index");
     });
-
     $("#menu-hasil-kelulusan").click(function() {
       $("#title-page").html("<br>Hasil Kelulusan</br>");
       $("#main-content").load("<?= base_url() ?>index.php/HasilKelulusan/index");
+    });
+    $("#login").click(function() {
+      $("#title-page").html("<br>Login</br>");
+      $("#main-content").load("<?= base_url() ?>index.php/Login/index");
     });
   });
 </script>

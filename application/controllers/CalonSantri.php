@@ -37,13 +37,17 @@ class CalonSantri extends CI_Controller
     // FUNGSI DIBAWAH INI YANG DIPAKE UNTUK JOIN 3 TABEL
     public function getCalonSantri()
     {
-        $CalonSantri = $this->CalonSantriModel->getTabelJoin();
+        $CalonSantri = $this->CalonSantriModel->getTabelJoinCalonSantri();
         echo json_encode($CalonSantri);
     }
     // FUNGSI DIATAS INI YANG DIPAKE UNTUK JOIN 3 
     
 
-
+    public function getProgram()
+    {
+        $CalonSantri = $this->CalonSantriModel->getTabelJoinProgram();
+        echo json_encode($CalonSantri);
+    }
 
 
 
