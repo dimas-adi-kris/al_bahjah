@@ -1,4 +1,4 @@
 # al_bahjah
 
-##Note
-  * Ubah <span style='backgroud:yellow'>password</span> pada konfigurasi database sesuai database anda
+## Note
+- Ubah **password** pada konfigurasi database sesuai database anda
