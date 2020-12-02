@@ -1,9 +1,0 @@
-request API ke database PSB <-- registrasi ulang
-
-isi data santri - sekaligus bikin akun.
-
-awalnya membuat akun. 
-
-
-
-santri login menggunakan email. kemudian melakuan kegiatan2 nya
