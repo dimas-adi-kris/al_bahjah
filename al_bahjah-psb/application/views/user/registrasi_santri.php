@@ -120,7 +120,7 @@
         function renderDataSantri(el) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>pembayaran/getDataById",
+                url: "<?=base_url()?>index.php/Pembayaran/getDataById",
                 data: {}
             }).done(function(msg) {
                 var pembayaran = JSON.parse(msg);
@@ -131,7 +131,7 @@
                 $("#id_periode").val("1");
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>calonsantri/getCalonSantriByPembayaran",
+                        url: "<?=base_url()?>index.php/CalonSantri/getCalonSantriByPembayaran",
                         data: {
                             id_pembayaran
                         }
@@ -175,7 +175,7 @@
             var formData = $(this).serialize();
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>calonsantri/simpanCalonSantri",
+                url: "<?=base_url()?>index.php/CalonSantri/simpanCalonSantri",
                 data: formData
             }).done(function(msg) {
                 console.log(msg);

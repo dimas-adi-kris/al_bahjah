@@ -96,10 +96,21 @@
                         var btn_ubah = '<button type="button" class="m-1 btn bg-gradient-info btn-sm class_ubah_data" id="btn_ubah_data" data-toggle="modal" data-target="#modal_form" id_tahun_pelajaran=' + res[i]['id_tahun_pelajaran'] + '><i class="fa fa-edit" aria-hidden="true"></i> Ubah</button>';
 
                         var btn_hapus = '<button type="button" class="m-1 btn bg-gradient-danger btn-sm class_hapus_data" id="btn_hapus_data" id_tahun_pelajaran=' + res[i]['id_tahun_pelajaran'] + '><i class = "fa fa-minus-circle" aria-hidden = "true" ></i> Hapus</button > ';
+
+                        var tanggal_mulai = new Date(res[i]['tanggal_mulai']).toLocaleDateString(undefined, {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        });
+                        var tanggal_selesai = new Date(res[i]['tanggal_selesai']).toLocaleDateString(undefined, {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        });
                         tabelListTahunPelajaran.row.add([
                             i + 1,
-                            res[i]['tanggal_mulai'],
-                            res[i]['tanggal_selesai'],
+                            tanggal_mulai,
+                            tanggal_selesai,
                             res[i]['deskripsi'],
                             btn_ubah + btn_hapus,
                         ]).draw(false);

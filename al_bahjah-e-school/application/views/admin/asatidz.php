@@ -139,13 +139,17 @@
                     // console.log(res);
                     for (i = 0; i < res.length; i++) {
                         var btn_ubah = '<button type="button" class="m-1 btn bg-gradient-info btn-sm class_ubah_data" id="btn_ubah_data" data-toggle="modal" data-target="#modal_form" id_asatidz=' + res[i]['id_asatidz'] + '><i class="fa fa-edit" aria-hidden="true"></i> Ubah</button>';
-
+                        var tanggal_lahir = new Date(res[i]['tanggal_lahir']).toLocaleDateString(undefined, {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        });
                         var btn_hapus = '<button type="button" class="m-1 btn bg-gradient-danger btn-sm class_hapus_data" id="btn_hapus_data" id_asatidz=' + res[i]['id_asatidz'] + '><i class = "fa fa-minus-circle" aria-hidden = "true" ></i> Hapus</button > ';
                         tabelListAsatidz.row.add([
                             i + 1,
                             res[i]['nama_lengkap'],
                             res[i]['nama_tanpa_gelar'],
-                            res[i]['tempat_lahir'] + " " + res[i]['tanggal_lahir'].split('-').reverse().join('-'),
+                            `${res[i]['tempat_lahir']}, ${tanggal_lahir}`,
                             res[i]['email'],
                             res[i]['telepon'],
                             res[i]['alamat'],

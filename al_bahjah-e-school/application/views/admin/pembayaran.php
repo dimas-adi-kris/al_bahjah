@@ -203,14 +203,23 @@
 
                                         var btn_status =
                                             '<div class="custom-control custom-switch"><input type="checkbox" class="custom-control-input" id="status_' + id + '" id_pembayaran="' + id + '" name="status_verifikasi"' + status + '><label class="custom-control-label" for="status_' + id + '"></label></div>';
-
+                                        var tanggal_pembayaran = new Date(res[i]['tanggal_pembayaran']).toLocaleDateString(undefined, {
+                                            day: 'numeric',
+                                            month: 'long',
+                                            year: 'numeric'
+                                        });
+                                        var tanggal_verifikasi = new Date(res[i]['tanggal_verifikasi']).toLocaleDateString(undefined, {
+                                            day: 'numeric',
+                                            month: 'long',
+                                            year: 'numeric'
+                                        });
                                         tableListPembayaran.row.add([
                                             i + 1,
                                             result[i]['nama'],
-                                            result[i]['tanggal_pembayaran'].split("-").reverse().join("-"),
+                                            tanggal_pembayaran,
                                             result[i]['jenis_pembayaran'],
                                             result[i]['bukti_berkas'],
-                                            result[i]['tanggal_verifikasi'].split("-").reverse().join("-"),
+                                            tanggal_verifikasi,
                                             result[i]['bulan'],
                                             result[i]['keterangan'],
                                             result[i]['nominal'],

@@ -106,7 +106,7 @@
         function renderWaliCalonSantri() {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>calonsantri/getCalonSantriJoinPembayaran",
+                url: "<?=base_url()?>index.php/CalonSantri/getCalonSantriJoinPembayaran",
                 data: {
                     id_calon_santri
                 }
@@ -143,7 +143,7 @@
             var data = $(this).serialize();
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>walicalonsantri/simpanData",
+                url: "<?=base_url()?>index.php/WaliCalonSantri/simpanData",
                 data: data
             }).done(function(msg) {
                 var res = JSON.parse(msg);

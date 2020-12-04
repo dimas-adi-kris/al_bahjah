@@ -113,13 +113,17 @@
                                                     Detail
                                                 </button>
                                             `;
-
+                            var tanggal_lahir = new Date(calon_santri['tanggal_lahir']).toLocaleDateString(undefined, {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric'
+                            });
                             tabelListSantri.row.add([
                                 i + 1,
                                 calon_santri['nama'],
                                 calon_santri['nik'],
                                 calon_santri['asal_sekolah'],
-                                `${calon_santri['tempat_lahir']}, ${calon_santri['tanggal_lahir'].split("-").reverse().join("-")}`,
+                                `${calon_santri['tempat_lahir']}, ${tanggal_lahir}`,
                                 calon_santri['gender'],
                                 calon_santri["nama_program"],
                                 calon_santri["nama_periode"] + " Masehi",

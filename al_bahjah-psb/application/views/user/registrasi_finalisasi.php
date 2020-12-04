@@ -2,7 +2,7 @@
     <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
-        
+
             <div class="col-lg-12">
             <div class="card">
                     <div class="card-header">
@@ -152,7 +152,7 @@
                                                     <h2 class="card-title">Kartu Keluarga</h2><br>
                                                     <h6 class="text-muted">10:58, 09 November 2020</h6>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="col-12 mb-2">
@@ -161,7 +161,7 @@
                                                     <h2 class="card-title">Raport</h2><br>
                                                     <h6 class="text-muted">10:58, 09 November 2020</h6>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="col-12 mb-2">
@@ -179,7 +179,7 @@
                                                     <h2 class="card-title">Kartu Keluarga</h2><br>
                                                     <h6 class="text-muted">10:58, 09 November 2020</h6>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="col-12 mb-2">
@@ -188,7 +188,7 @@
                                                     <h2 class="card-title">Raport</h2><br>
                                                     <h6 class="text-muted">10:58, 09 November 2020</h6>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="col-12 mb-2">
@@ -222,7 +222,7 @@
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4"> Cetak Kartu Ujian </h1>
                     </div>
-                    
+
                         <div class="row justify-content-center mt-5">
                             <div>
                                 <i class="fas fa-id-card px-3 px-sm-4 mt-3 mb-4" style="font-size:15rem;"></i>
@@ -241,7 +241,7 @@
 
                             <button type="submit" class="btn btn-success float-right" id="kartu-ujian"> Simpan Data dan Cetak Kartu Ujian </button>
                             </div>
-                        
+
                         </div>
                     </div>
                 </div>
@@ -261,7 +261,7 @@ $(document).ready(function () {
     function renderDataSantri() {
         $.ajax({
             method: "POST",
-            url: "<?= base_url() ?>calonsantri/getCalonSantriById",
+            url: "<?=base_url()?>index.php/CalonSantri/getCalonSantriById",
             data: {
                 id_calon_santri
             }
@@ -286,7 +286,7 @@ $(document).ready(function () {
 
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>program/getProgramById",
+                url: "<?=base_url()?>index.php/Program/getProgramById",
                 data: {
                     id_program: res['id_program']
                 }
@@ -297,7 +297,7 @@ $(document).ready(function () {
 
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>periode/getPeriodeById",
+                url: "<?=base_url()?>index.php/Periode/getPeriodeById",
                 data: {
                     id_periode: res['id_periode']
                 }
@@ -316,7 +316,7 @@ $(document).ready(function () {
     function renderDataWali(){
         $.ajax({
             method: "POST",
-            url: "<?= base_url() ?>walicalonsantri/getDataById",
+            url: "<?=base_url()?>index.php/WaliCalonSantri/getDataById",
             data: { id_calon_santri
                     }
         })
@@ -328,7 +328,7 @@ $(document).ready(function () {
             return;
             }
 
-            // SET DATA WALI 
+            // SET DATA WALI
             $("#nama_wali_santri").text(res['nama']);
             $("#no_ktp_wali_santri").text(res['no_ktp']);
             $("#email_wali_santri").text(res['email']);
@@ -366,7 +366,7 @@ $(document).ready(function () {
     $('#kartu-ujian').click(function() {
         var img = document.createElement('IMG');
         var imgData;
-        img.src = '<?= base_url(); ?>assets/img/kartu_ujian/kartuUjian01.png';
+        img.src = '<?=base_url();?>assets/img/kartu_ujian/kartuUjian01.png';
         img.onload = function(){
             var canvas = document.createElement('canvas');
             var ctx = canvas.getContext('2d');
@@ -375,11 +375,11 @@ $(document).ready(function () {
             ctx.drawImage(this,0,0);
             imgData = canvas.toDataURL('image/jpg');
             var doc = new jsPDF("l", "mm", "b5");
-    
+
             doc.addImage(imgData, 'png', 0, 0, 250,176,"", "FAST");
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>index.php/CalonSantri/getCalonSantri",
+                url: "<?=base_url()?>/index.php/CalonSantri/getCalonSantri",
                 data: {}
             })
             .done(function(msg) {
@@ -393,10 +393,10 @@ $(document).ready(function () {
                 // console.log(ruang);
                 // console.log(kelas);
                 // console.log(no_ujian);
-    
+
                 doc.setFontSize(22);
                 doc.setTextColor(0, 0, 0);
-    
+
                 doc.text(85, 93, name);
                 // doc.text(50, 122, kelas);
                 doc.text(85, 119, ruang);
@@ -408,11 +408,11 @@ $(document).ready(function () {
                 // // console.log('data');
                 // var fd = new FormData();
                 // fd.append("myPdf", file);
-    
+
                 // // var tes = doc.save('test.pdf');
                 // $.ajax({
                 // type: "POST",
-                // url: "<?= base_url(); ?>index.php/Auth/tes",
+                // url: "<?=base_url();?>/index.php/Auth/tes",
                 // dataType: 'text',
                 // processData: false,
                 // contentType: false,
