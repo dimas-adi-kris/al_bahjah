@@ -55,7 +55,7 @@
     $(document).ready(function() {
         $.ajax({
             method: "POST",
-            url: "<?= base_url() ?>jadwalujian/getJadwalUjian",
+            url: "<?=base_url()?>index.php/JadwalUjian/getJadwalUjian",
             data: {}
         }).done(function(msg) {
             var res = JSON.parse(msg);
@@ -68,7 +68,7 @@
 
         $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>calonsantri/getCalonSantri",
+                url: "<?=base_url()?>index.php/CalonSantri/getCalonSantri",
                 data: {}
             })
             .done(function(msg) {

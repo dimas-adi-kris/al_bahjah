@@ -54,10 +54,10 @@
         renderTabelListSantri();
 
         function renderTabelListSantri(id_program) {
-            var url = "<?= base_url() ?>santri/getDataCalonSantriLulus";
+            var url = "<?=base_url()?>index.php/Santri/getDataCalonSantriLulus";
             var data = {};
             if (id_program) {
-                url = "<?= base_url() ?>calonsantri/getAllCalonSantriJoinProgram";
+                url = "<?=base_url()?>index.php/CalonSantri/getAllCalonSantriJoinProgram";
                 data = {
                     id_program
                 };
@@ -86,7 +86,7 @@
                         (function(_calon_santri, _i) {
                             $.ajax({
                                 method: "POST",
-                                url: "<?= base_url() ?>santri/getDataByIdCalonSantri",
+                                url: "<?=base_url()?>index.php/Santri/getDataByIdCalonSantri",
                                 data: {
                                     id_calon_santri
                                 }
@@ -133,7 +133,7 @@
 
         $("#tabel-list-santri").on('click', '.detail', function() {
             var id = $(this).attr("id_calon_santri");
-            $("#main-content").load("<?= base_url() ?>admin/detail");
+            $("#main-content").load("<?=base_url()?>index.php/Admin/detail");
             $("#page-title").text("Santri").remove("#detail_id").append(`<div detail_id="${id}" id="detail_id" hidden></div>`);
         });
     })

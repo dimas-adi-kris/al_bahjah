@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="<?= base_url(); ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?=base_url();?>assets/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -68,10 +68,10 @@
     </div>
 
     <!-- jQuery -->
-    <script src="<?= base_url() ?>plugins/jquery/jquery.min.js"></script>
+    <script src="<?=base_url()?>plugins/jquery/jquery.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<?= base_url(); ?>assets/js/sb-admin-2.min.js"></script>
+    <script src="<?=base_url();?>assets/js/sb-admin-2.min.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -82,7 +82,7 @@
                 console.log(formData);
                 $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>pembayaran/getDataByOtp",
+                    url: "<?=base_url()?>index.php/Pembayaran/getDataByOtp",
                     data: formData
                 }).done(function(msg) {
                     var res = JSON.parse(msg);
@@ -93,7 +93,7 @@
                     } else if (res['status'] == 1 || res['status'] == "1") {
                         if (data['status_verifikasi'] == "TERVERIFIKASI") {
                             alert("Kode OTP anda terkonfirmasi. Silahkan lanjutkan pendaftaran");
-                            location.replace("<?= base_url() ?>auth/registrasi")
+                            location.replace("<?=base_url()?>index.php/Auth/registrasi")
                         } else {
                             $(".alert-box").html('<div class=" alert alert-danger">Bukti pembayaran anda sedang diproses dan belum dikonfirmasi. Silahkan hubungi admin untuk info lebih lanjut</div>')
                         }

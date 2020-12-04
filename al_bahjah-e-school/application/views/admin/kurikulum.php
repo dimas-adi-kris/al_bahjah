@@ -81,7 +81,7 @@
             tabelListKurikulum.clear();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>Kurikulum/getData",
+                    url: "<?=base_url()?>index.php/Kurikulum/getData",
                     data: {}
                 })
                 .done(function(msg) {
@@ -108,7 +108,7 @@
                 .append("<option selected='selected' value'0'>[pilih jenis kurikulum]</option>");
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>kurikulum/getListJeniskurikulum",
+                    url: "<?=base_url()?>index.php/Kurikulum/getListJeniskurikulum",
                     data: {}
                 })
                 .done(function(msg) {
@@ -147,7 +147,7 @@
             console.log(formData);
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>Kurikulum/simpanData",
+                    url: "<?=base_url()?>index.php/Kurikulum/simpanData",
                     data: formData
                 })
                 .done(function(msg) {
@@ -177,7 +177,7 @@
 
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>Kurikulum/hapusData",
+                        url: "<?=base_url()?>index.php/Kurikulum/hapusData",
                         data: {
                             id_kurikulum: id_kurikulum
                         }
@@ -198,7 +198,7 @@
             console.log(id_kurikulum);
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>kurikulum/getDataById",
+                    url: "<?=base_url()?>index.php/Kurikulum/getDataById",
                     data: {
                         id_kurikulum: id_kurikulum
                     }

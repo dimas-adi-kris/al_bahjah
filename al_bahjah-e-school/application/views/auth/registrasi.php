@@ -12,12 +12,12 @@
 	<title> Login </title>
 
 	<!-- Custom fonts for this template-->
-	<link href="<?= base_url() ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="<?=base_url()?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 	<!-- Custom styles for this template-->
-	<link href="<?= base_url() ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
-	<link rel="shortcut icon" href="<?= base_url() ?>assets/img/icon-albahjah-300x300.png" type="image/x-icon">
+	<link href="<?=base_url()?>assets/css/sb-admin-2.min.css" rel="stylesheet">
+	<link rel="shortcut icon" href="<?=base_url()?>assets/img/icon-albahjah-300x300.png" type="image/x-icon">
 
 
 	<style>
@@ -98,14 +98,14 @@
 
 
 	<!-- Bootstrap core JavaScript-->
-	<script src="<?= base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
-	<script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="<?=base_url()?>assets/vendor/jquery/jquery.min.js"></script>
+	<script src="<?=base_url()?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
-	<script src="<?= base_url() ?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="<?=base_url()?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom scripts for all pages-->
-	<script src="<?= base_url() ?>assets/js/sb-admin-2.min.js"></script>
+	<script src="<?=base_url()?>assets/js/sb-admin-2.min.js"></script>
 
 	<script>
 		$(document).ready(function() {
@@ -115,7 +115,7 @@
 				var formData = $(this).serialize();
 				$.ajax({
 					method: "POST",
-					url: "<?= base_url() ?>user/registrasi",
+					url: "<?=base_url()?>index.php/User/registrasi",
 					data: formData
 				}).done(function(msg) {
 					var res = JSON.parse(msg);
@@ -128,7 +128,7 @@
 						alert("Gagal melakukan registrai, silahkan hubungi operator")
 
 					} else if (res['status'] == '1' || res['status'] == 1) {
-						$("#alert-box").html('<div class="alert alert-danger">Santri sudah melakukan registrasi. Silahkan <a href="<?= base_url() ?>auth" class="btn-link">Login</a></div>');
+						$("#alert-box").html('<div class="alert alert-danger">Santri sudah melakukan registrasi. Silahkan <a href="<?=base_url()?>index.php/Auth" class="btn-link">Login</a></div>');
 
 					} else if (res['status'] == '2' || res['status'] == 2) {
 						$("#alert-box").html('<div class="alert alert-danger">Email telah terdaftar, mohon gunakan email lain</div>');
@@ -138,7 +138,7 @@
 
 					} else if (res['status'] == '4' || res['status'] == 4) {
 						alert("Registrasi Santri berhasil, silahkan login");
-						document.location.replace('<?= base_url() ?>auth/santri_login');
+						document.location.replace('<?=base_url()?>index.php/Auth/santri_login');
 					} else {
 						alert("Error");
 					}

@@ -12,12 +12,12 @@
     <title> Validaso Data Santri </title>
 
     <!-- Custom fonts for this template-->
-    <link href="<?= base_url() ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="<?= base_url() ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="<?= base_url() ?>assets/img/icon-albahjah-300x300.png" type="image/x-icon">
+    <link href="<?=base_url()?>assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="<?=base_url()?>assets/img/icon-albahjah-300x300.png" type="image/x-icon">
 
 
     <style>
@@ -306,14 +306,14 @@
 
 
     <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?=base_url()?>assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?=base_url()?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="<?= base_url() ?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?=base_url()?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<?= base_url() ?>assets/js/sb-admin-2.min.js"></script>
+    <script src="<?=base_url()?>assets/js/sb-admin-2.min.js"></script>
 
 
 
@@ -323,13 +323,13 @@
 
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>user/getDataByIdCalonSantri",
+                    url: "<?=base_url()?>index.php/User/getDataByIdCalonSantri",
                     data: {}
                 })
                 .done(function(msg) {
                     if (msg == 1) {
                         alert('Anda lulus, dan telah membuat akun. Silahkan login');
-                        location.href.replace('<?= base_url(); ?>auth')
+                        location.href.replace('<?=base_url();?>index.php/Auth')
                     }
                 });
 
@@ -338,7 +338,7 @@
             function renderDataSantri() {
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>user/getCalonSantriById",
+                        url: "<?=base_url()?>index.php/User/getCalonSantriById",
                         data: {}
                     })
 
@@ -371,7 +371,7 @@
             function renderDataWali(wali_calon_santri) {
 
 
-                // SET DATA TABEL WALI 
+                // SET DATA TABEL WALI
                 $("#nama_wali_santri").text(wali_calon_santri['nama']);
                 $("#no_ktp_wali_santri").text(wali_calon_santri['no_ktp']);
                 $("#email_wali_santri").text(wali_calon_santri['email']);
@@ -386,7 +386,7 @@
 
             $("#form-validasi").submit(function() {
                 event.preventDefault();
-                document.location.replace('<?= base_url() ?>auth/registrasi');
+                document.location.replace('<?=base_url()?>index.php/Auth/registrasi');
             })
         });
     </script>

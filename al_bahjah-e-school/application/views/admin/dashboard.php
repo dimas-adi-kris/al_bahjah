@@ -40,14 +40,14 @@
     $(document).ready(function() {
         $.ajax({
             method: "POST",
-            url: "<?= base_url(); ?>user/getHasilKelulusan",
+            url: "<?=base_url();?>index.php/User/getHasilKelulusan",
             data: {}
         }).done(function(msg) {
             var res = JSON.parse(msg);
             $("#santri_lulus").html(res.length);
             $.ajax({
                 method: "POST",
-                url: "<?= base_url(); ?>santri/getDataSantri",
+                url: "<?=base_url();?>index.php/Santri/getDataSantri",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);

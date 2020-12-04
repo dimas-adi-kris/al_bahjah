@@ -46,7 +46,7 @@
 
         $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>pesertakelas/getDataByIdSantri",
+                url: "<?=base_url()?>index.php/PesertaKelas/getDataByIdSantri",
                 data: {}
             })
             .done(function(msg) {

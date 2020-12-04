@@ -11,14 +11,14 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Reset Password</h1>
                                 </div>
-                                <?= $this->session->flashdata('message'); ?>
-                                <form class="user" method="POST" action="<?= base_url('auth/new_pass'); ?>">
+                                <?=$this->session->flashdata('message');?>
+                                <form class="user" method="POST" action="<?=base_url('Auth/new_pass');?>">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="email" name="email" value="<?= $email; ?>" readonly />
+                                        <input type="text" class="form-control form-control-user" id="email" name="email" value="<?=$email;?>" readonly />
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" id="new_password1" name="new_password1" placeholder="New Password" />
-                                        <?= form_error('new_password1', '<small class="text-danger pl-2">', '</small>'); ?>
+                                        <?=form_error('new_password1', '<small class="text-danger pl-2">', '</small>');?>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" id="new_password2" name="new_password2" placeholder="Confirm New Password" />
@@ -29,7 +29,7 @@
                                 </form>
                                 <hr />
                                 <div class="text-center">
-                                    <a href="<?= base_url('auth'); ?>" class="small">Back to login</a>
+                                    <a href="<?=base_url('Auth');?>" class="small">Back to login</a>
                                 </div>
                             </div>
                         </div>

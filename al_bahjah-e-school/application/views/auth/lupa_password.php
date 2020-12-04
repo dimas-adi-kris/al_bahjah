@@ -21,10 +21,10 @@
                                 </form>
                                 <hr />
                                 <div class="text-center">
-                                    <a href="<?= base_url() ?>auth/santri_login" class="btn btn-link c-s login">Login</a>
+                                    <a href="<?=base_url()?>index.php/Auth/santri_login" class="btn btn-link c-s login">Login</a>
                                 </div>
                                 <div class="text-center">
-                                    <a href="<?= base_url() ?>auth" class="btn btn-link c-s login">Cek Kelulusan</a>
+                                    <a href="<?=base_url()?>index.php/Auth" class="btn btn-link c-s login">Cek Kelulusan</a>
                                 </div>
                             </div>
                         </div>

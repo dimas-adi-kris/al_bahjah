@@ -125,7 +125,7 @@
             tabelListRuang.clear();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>Ruang/getData",
+                    url: "<?=base_url()?>index.php/Ruang/getData",
                     data: {}
                 })
                 .done(function(msg) {
@@ -173,7 +173,7 @@
             // console.log(formData);
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>Ruang/simpanData",
+                    url: "<?=base_url()?>index.php/Ruang/simpanData",
                     data: formData
                 })
                 .done(function(msg) {
@@ -203,7 +203,7 @@
 
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>Ruang/hapusData",
+                        url: "<?=base_url()?>index.php/Ruang/hapusData",
                         data: {
                             id_ruang: id_ruang
                         }
@@ -224,7 +224,7 @@
             // console.log(id_ruang);
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>Ruang/getDataById",
+                    url: "<?=base_url()?>index.php/Ruang/getDataById",
                     data: {
                         id_ruang: id_ruang
                     }

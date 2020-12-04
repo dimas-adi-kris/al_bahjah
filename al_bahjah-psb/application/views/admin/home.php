@@ -11,22 +11,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
 
-    <link rel="stylesheet" href="<?= base_url() ?>plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="<?=base_url()?>plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
-    <!-- <link rel="stylesheet" href="<?= base_url() ?>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"> -->
+    <!-- <link rel="stylesheet" href="<?=base_url()?>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"> -->
     <!-- iCheck -->
-    <!-- <link rel="stylesheet" href="<?= base_url() ?>plugins/icheck-bootstrap/icheck-bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="<?=base_url()?>plugins/icheck-bootstrap/icheck-bootstrap.min.css"> -->
 
     <!-- Date Picker -->
-    <link rel="stylesheet" href="<?= base_url() ?>plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="<?=base_url()?>plugins/daterangepicker/daterangepicker.css">
 
     <!-- data table -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
 
     <!-- Theme style -->
-    <link rel="stylesheet" href="<?= base_url() ?>dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="<?=base_url()?>dist/css/adminlte.min.css">
 
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -81,7 +81,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="<?= base_url() ?>dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                                <img src="<?=base_url()?>dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         Brad Diesel
@@ -97,7 +97,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="<?= base_url() ?>dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                <img src="<?=base_url()?>dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         John Pierce
@@ -113,7 +113,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="<?= base_url() ?>dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                <img src="<?=base_url()?>dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         Nora Silvester
@@ -169,7 +169,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="<?= base_url() ?>dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="<?=base_url()?>dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">AdminLTE 3</span>
             </a>
 
@@ -178,7 +178,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= base_url() ?>dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="<?=base_url()?>dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block"> Admin </a>
@@ -306,65 +306,65 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="<?= base_url() ?>plugins/jquery/jquery.min.js"></script>
+    <script src="<?=base_url()?>plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="<?= base_url() ?>plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<?=base_url()?>plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
-    <script src="<?= base_url() ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?=base_url()?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- AdminLTE App -->
-    <script src="<?= base_url() ?>dist/js/adminlte.js"></script>
+    <script src="<?=base_url()?>dist/js/adminlte.js"></script>
     <!-- data table -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 
 
     <!-- AdminLTE for demo purposes -->
-    <script src="<?= base_url() ?>dist/js/demo.js"></script>
+    <script src="<?=base_url()?>dist/js/demo.js"></script>
 </body>
 
 </html>
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#main-content").load("<?= base_url() ?>user");
+        $("#main-content").load("<?=base_url()?>User");
         // $("#menu-profile").click(function() {
         //   $("#page-title").text("Profile Sekolah");
-        //   $("#main-content").load("<?= base_url() ?>index.php/profile/getProfilePage");
+        //   $("#main-content").load("<?=base_url()?>index.php/profile/getProfilePage");
         // });
 
         $("#dashboard").click(function() {
-            $("#main-content").load("<?= base_url() ?>user");
+            $("#main-content").load("<?=base_url()?>User");
             $("#page-title").text("Dashboard");
         });
 
         $("#calon_santri").click(function() {
-            $("#main-content").load("<?= base_url() ?>operator");
+            $("#main-content").load("<?=base_url()?>Operator");
             $("#page-title").text("Calon Santri");
         });
 
         $("#jadwal_ujian").click(function() {
-            $("#main-content").load("<?= base_url() ?>operator/jadwal");
+            $("#main-content").load("<?=base_url()?>Operator/jadwal");
             $("#page-title").text("Jadwal Ujian");
         });
 
         $("#pembayaran").click(function() {
-            $("#main-content").load("<?= base_url() ?>pembayaran");
+            $("#main-content").load("<?=base_url()?>Pembayaran");
             $("#page-title").text("Pembayaran");
         });
 
         $("#periode").click(function() {
-            $("#main-content").load("<?= base_url() ?>admin/periode");
+            $("#main-content").load("<?=base_url()?>Admin/periode");
             $("#page-title").text("Periode");
         });
 
 
         $("#hasil_kelulusan").click(function() {
-            $("#main-content").load("<?= base_url() ?>admin/hasil_kelulusan");
+            $("#main-content").load("<?=base_url()?>Admin/hasil_kelulusan");
             $("#page-title").text("Hasil Kelulusan");
         });
 
@@ -373,11 +373,11 @@
             if (confirm("Anda yakin ingin logout?")) {
                 $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>user/logout",
+                    url: "<?=base_url()?>user/logout",
                     data: {}
                 }).done(function(msg) {
                     if (msg == "1" || msg == "1") {
-                        document.location.replace("<?= base_url('auth') ?>");
+                        document.location.replace("<?=base_url('auth')?>");
                     }
                 })
             } else {

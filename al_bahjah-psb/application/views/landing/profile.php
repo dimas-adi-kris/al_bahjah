@@ -15,7 +15,7 @@
         </div>
 
         <div class="text-center col-md-6 mb-2">
-            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width:25rem;" src="<?= base_url() ?>assets/img/albahjahlogo.png" alt="">
+            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width:25rem;" src="<?=base_url()?>assets/img/albahjahlogo.png" alt="">
         </div>
     </div>
 </div>
@@ -56,7 +56,7 @@
                         (01 Oktober – 31 Desember 2020 M) </strong><br> <br>
                     </p> -->
 
-            <a rel="nofollow" href="<?= base_url() ?>auth/otp">
+            <a rel="nofollow" href="<?=base_url()?>index.php/Auth/otp">
                 <button class="btn btn-success c" style="border-radius:20rem!important;">
                     <h5 class="mt-2">Klik untuk pendaftaran&rarr;</h5>
                 </button> </a>
@@ -90,7 +90,7 @@
             </div>
 
             <div class="text-center col-md-6">
-                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;" src="<?= base_url() ?>assets/img/MASKOT-ANIN.PNG" alt="">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;" src="<?=base_url()?>assets/img/MASKOT-ANIN.PNG" alt="">
             </div>
         </div>
 
@@ -116,7 +116,7 @@
             </div>
 
             <div class="text-center col-md-6">
-                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;" src="<?= base_url() ?>assets/img/MASKOT-QOSIM.PNG" alt="">
+                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 15rem;" src="<?=base_url()?>assets/img/MASKOT-QOSIM.PNG" alt="">
             </div>
         </div>
     </div>
@@ -125,7 +125,7 @@
         $(document).ready(function() {
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>periode/getPeriode",
+                    url: "<?=base_url()?>index.php/Periode/getPeriode",
                     data: {}
                 })
                 .done(function(msg) {

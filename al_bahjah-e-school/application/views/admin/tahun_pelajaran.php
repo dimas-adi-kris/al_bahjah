@@ -86,7 +86,7 @@
             tabelListTahunPelajaran.clear();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>TahunPelajaran/getData",
+                    url: "<?=base_url()?>index.php/TahunPelajaran/getData",
                     data: {}
                 })
                 .done(function(msg) {
@@ -126,7 +126,7 @@
             // console.log(formData);
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>TahunPelajaran/simpanData",
+                    url: "<?=base_url()?>index.php/TahunPelajaran/simpanData",
                     data: formData
                 })
                 .done(function(msg) {
@@ -156,7 +156,7 @@
 
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>TahunPelajaran/hapusData",
+                        url: "<?=base_url()?>index.php/TahunPelajaran/hapusData",
                         data: {
                             id_tahun_pelajaran: id_tahun_pelajaran
                         }
@@ -177,7 +177,7 @@
             // console.log(id_tahun_pelajaran);
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>TahunPelajaran/getDataById",
+                    url: "<?=base_url()?>index.php/TahunPelajaran/getDataById",
                     data: {
                         id_tahun_pelajaran: id_tahun_pelajaran
                     }

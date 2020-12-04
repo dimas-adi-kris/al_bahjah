@@ -162,7 +162,7 @@
                                                     <h2 class="card-title">Kartu Keluarga</h2><br>
                                                     <h6 class="text-muted">10:58, 09 November 2020</h6>
                                                 </div>
-                                                <img src="<?= base_url('assets/img/user.jpg') ?>" class="card-img-top img-fluid">
+                                                <img src="<?=base_url('assets/img/user.jpg')?>" class="card-img-top img-fluid">
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -171,7 +171,7 @@
                                                     <h2 class="card-title">Rafor</h2><br>
                                                     <h6 class="text-muted">10:58, 09 November 2020</h6>
                                                 </div>
-                                                <img src="<?= base_url('assets/img/user.jpg') ?>" class="card-img-top img-fluid">
+                                                <img src="<?=base_url('assets/img/user.jpg')?>" class="card-img-top img-fluid">
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -180,7 +180,7 @@
                                                     <h2 class="card-title">Ijazah Terakhir</h2><br>
                                                     <h6 class="text-muted">10:58, 09 November 2020</h6>
                                                 </div>
-                                                <img src="<?= base_url('assets/img/user.jpg') ?>" class="card-img-top img-fluid">
+                                                <img src="<?=base_url('assets/img/user.jpg')?>" class="card-img-top img-fluid">
                                             </div>
                                         </div>
                                     </div>
@@ -391,7 +391,7 @@
             function renderDataSantri() {
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>calonsantri/getCalonSantriById",
+                        url: "<?=base_url()?>CalonSantri/getCalonSantriById",
                         data: {
                             id_calon_santri
                         }
@@ -414,7 +414,7 @@
                         $("#riwayat_penyakit").text(res['riwayat_penyakit']);
                         $.ajax({
                             method: "POST",
-                            url: "<?= base_url() ?>program/getProgramById",
+                            url: "<?=base_url()?>Program/getProgramById",
                             data: {
                                 id_program: res['id_program']
                             }
@@ -426,7 +426,7 @@
 
                         $.ajax({
                             method: "POST",
-                            url: "<?= base_url() ?>periode/getPeriodeById",
+                            url: "<?=base_url()?>Periode/getPeriodeById",
                             data: {
                                 id_periode: res['id_periode']
                             }
@@ -459,7 +459,7 @@
             function renderDataWali() {
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>walicalonsantri/getDataById",
+                        url: "<?=base_url()?>WaliCalonSantri/getDataById",
                         data: {
                             id_calon_santri
                         }
@@ -522,7 +522,7 @@
 
                 $.ajax({
                     method: "POST",
-                    url: "<?= base_url(); ?>walicalonsantri/simpanData",
+                    url: "<?=base_url();?>Walicalonsantri/simpanData",
                     data: data
                 }).done(function(msg) {
                     var res = JSON.parse(msg);
@@ -542,7 +542,7 @@
 
                 $.ajax({
                     method: "POST",
-                    url: "<?= base_url(); ?>calonsantri/simpanCalonSantri",
+                    url: "<?=base_url();?>Calonsantri/simpanCalonSantri",
                     data: data
                 }).done(function(msg) {
                     var res = JSON.parse(msg);
@@ -560,7 +560,7 @@
                 var status = $(this).attr("checked") == "checked" ? "BELUM" : "TERVERIFIKASI";
                 $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>calonsantri/updateStatusCalonSantri",
+                    url: "<?=base_url()?>CalonSantri/updateStatusCalonSantri",
                     data: {
                         id_calon_santri,
                         status

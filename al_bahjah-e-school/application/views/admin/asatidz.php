@@ -131,7 +131,7 @@
             tabelListAsatidz.clear();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>asatidz/getData",
+                    url: "<?=base_url()?>index.php/Asatidz/getData",
                     data: {}
                 })
                 .done(function(msg) {
@@ -183,7 +183,7 @@
             // console.log(formData);
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>asatidz/simpanData",
+                    url: "<?=base_url()?>index.php/Asatidz/simpanData",
                     data: formData
                 })
                 .done(function(msg) {
@@ -213,7 +213,7 @@
 
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>asatidz/hapusData",
+                        url: "<?=base_url()?>index.php/Asatidz/hapusData",
                         data: {
                             id_asatidz: id_asatidz
                         }
@@ -234,7 +234,7 @@
             // console.log(id_asatidz);
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>asatidz/getDataById",
+                    url: "<?=base_url()?>index.php/Asatidz/getDataById",
                     data: {
                         id_asatidz: id_asatidz
                     }

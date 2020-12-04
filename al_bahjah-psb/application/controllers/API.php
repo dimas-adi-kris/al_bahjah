@@ -45,16 +45,16 @@ class API extends CI_Controller
         echo json_encode($data);
     }
 
-    public function getHasilkelulusanById($id_calon_santri)
+    public function getHasilKelulusanById($id_calon_santri)
     {
-        $res = $this->APIModel->getHasilkelulusanById($id_calon_santri);
+        $res = $this->APIModel->getHasilKelulusanById($id_calon_santri);
 
         echo json_encode($res);
     }
 
-    public function getHasilkelulusan()
+    public function getHasilKelulusan()
     {
-        $res = $this->APIModel->getHasilkelulusan();
+        $res = $this->APIModel->getHasilKelulusan();
         echo json_encode($res);
     }
 
@@ -72,7 +72,7 @@ class API extends CI_Controller
         $wali_calon_santri = $this->APIModel->getAPIInfoDasarWaliCalonSantriByID($id_calon_santri);
         $data = [
             'calon_santri' => $calon_santri,
-            'wali_calon_santri' => $wali_calon_santri
+            'wali_calon_santri' => $wali_calon_santri,
         ];
 
         echo json_encode($data);

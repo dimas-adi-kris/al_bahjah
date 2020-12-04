@@ -82,7 +82,7 @@ class APIModel extends CI_Model
     public function cekHasilKelulusan($data)
     {
         $sql = "SELECT cs.*, hk.`status_lulus`
-                FROM calon_santri cs, wali_calon_santri wcs, hasil_kelulusan hk 
+                FROM calon_santri cs, wali_calon_santri wcs, hasil_kelulusan hk
                 WHERE cs.nama= ?
                     AND cs.tanggal_lahir= ?
                     AND cs.nik= ?

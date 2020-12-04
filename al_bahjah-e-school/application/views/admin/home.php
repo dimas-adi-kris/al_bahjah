@@ -10,27 +10,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
 
-    <link rel="stylesheet" href="<?= base_url() ?>plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="<?=base_url()?>plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
-    <!-- <link rel="stylesheet" href="<?= base_url() ?>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"> -->
+    <!-- <link rel="stylesheet" href="<?=base_url()?>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"> -->
     <!-- iCheck -->
-    <!-- <link rel="stylesheet" href="<?= base_url() ?>plugins/icheck-bootstrap/icheck-bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="<?=base_url()?>plugins/icheck-bootstrap/icheck-bootstrap.min.css"> -->
 
     <!-- Date Picker -->
-    <link rel="stylesheet" href="<?= base_url() ?>plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="<?=base_url()?>plugins/daterangepicker/daterangepicker.css">
 
     <!-- data table -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
 
     <!-- Theme style -->
-    <link rel="stylesheet" href="<?= base_url() ?>dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="<?=base_url()?>dist/css/adminlte.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" rel="stylesheet" />
 
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <link rel="shortcut icon" href="<?= base_url() ?>assets/img/icon-albahjah-300x300.png" type="image/x-icon">
+    <link rel="shortcut icon" href="<?=base_url()?>assets/img/icon-albahjah-300x300.png" type="image/x-icon">
     <style>
         .o-f {
             overflow-x: scroll;
@@ -85,7 +85,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="<?= base_url() ?>dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                                <img src="<?=base_url()?>dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         Brad Diesel
@@ -101,7 +101,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="<?= base_url() ?>dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                <img src="<?=base_url()?>dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         John Pierce
@@ -117,7 +117,7 @@
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             <div class="media">
-                                <img src="<?= base_url() ?>dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                <img src="<?=base_url()?>dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
                                 <div class="media-body">
                                     <h3 class="dropdown-item-title">
                                         Nora Silvester
@@ -173,7 +173,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="<?= base_url() ?>dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="<?=base_url()?>dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">AdminLTE 3</span>
             </a>
 
@@ -182,7 +182,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?= base_url() ?>dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="<?=base_url()?>dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Alexander Pierce</a>
@@ -358,25 +358,25 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="<?= base_url() ?>plugins/jquery/jquery.min.js"></script>
+    <script src="<?=base_url()?>plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="<?= base_url() ?>plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<?=base_url()?>plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
-    <script src="<?= base_url() ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?=base_url()?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- AdminLTE App -->
-    <script src="<?= base_url() ?>dist/js/adminlte.js"></script>
+    <script src="<?=base_url()?>dist/js/adminlte.js"></script>
     <!-- data table -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 
 
     <!-- AdminLTE for demo purposes -->
-    <script src="<?= base_url() ?>dist/js/demo.js"></script>
+    <script src="<?=base_url()?>dist/js/demo.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
 </body>
 
@@ -384,69 +384,69 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#main-content").load("<?= base_url() ?>admin/dashboard");
+        $("#main-content").load("<?=base_url()?>index.php/Admin/dashboard");
         // $("#menu-profile").click(function() {
         //   $("#page-title").text("Profile Sekolah");
-        //   $("#main-content").load("<?= base_url() ?>index.php/profile/getProfilePage");
+        //   $("#main-content").load("<?=base_url()?>index.php/Index.php/profile/getProfilePage");
         // });
 
         $("#dashboard").click(function() {
-            $("#main-content").load("<?= base_url() ?>admin/dashboard");
+            $("#main-content").load("<?=base_url()?>index.php/Admin/dashboard");
             $("#page-title").text("Dashboard");
         });
 
         $("#santri").click(function() {
-            $("#main-content").load("<?= base_url() ?>admin/santri");
+            $("#main-content").load("<?=base_url()?>index.php/Admin/santri");
             $("#page-title").text("Santri");
         });
 
         $("#asatidz").click(function() {
-            $("#main-content").load("<?= base_url() ?>admin/asatidz");
+            $("#main-content").load("<?=base_url()?>index.php/Admin/asatidz");
             $("#page-title").text("Asatidz");
         });
 
         $("#asatidz_kelas").click(function() {
-            $("#main-content").load("<?= base_url() ?>admin/asatidz_kelas");
+            $("#main-content").load("<?=base_url()?>index.php/Admin/asatidz_kelas");
             $("#page-title").text("Asatidz Kelas");
         });
 
         $("#pembayaran").click(function() {
-            $("#main-content").load("<?= base_url() ?>admin/pembayaran");
+            $("#main-content").load("<?=base_url()?>index.php/Admin/pembayaran");
             $("#page-title").text("Pembayaran");
         });
 
         $("#ruang").click(function() {
-            $("#main-content").load("<?= base_url() ?>admin/ruang");
+            $("#main-content").load("<?=base_url()?>index.php/Admin/ruang");
             $("#page-title").text("Ruang");
         });
 
         $("#kelas_mata_pelajaran").click(function() {
-            $("#main-content").load("<?= base_url() ?>admin/kelas_mata_pelajaran");
+            $("#main-content").load("<?=base_url()?>index.php/Admin/kelas_mata_pelajaran");
             $("#page-title").text("Kelas Mata Pelajaran");
         });
 
         $("#mata_pelajaran").click(function() {
-            $("#main-content").load("<?= base_url() ?>admin/mata_pelajaran");
+            $("#main-content").load("<?=base_url()?>index.php/Admin/mata_pelajaran");
             $("#page-title").text("Mata Pelajaran");
         });
 
         $("#nilai_mata_pelajaran").click(function() {
-            $("#main-content").load("<?= base_url() ?>admin/nilai_mata_pelajaran");
+            $("#main-content").load("<?=base_url()?>index.php/Admin/nilai_mata_pelajaran");
             $("#page-title").text("Nilai Mata Pelajaran");
         });
 
         $("#tahun_pelajaran").click(function() {
-            $("#main-content").load("<?= base_url() ?>admin/tahun_pelajaran");
+            $("#main-content").load("<?=base_url()?>index.php/Admin/tahun_pelajaran");
             $("#page-title").text("Tahun Pelajaran");
         });
 
         $("#peserta_kelas").click(function() {
-            $("#main-content").load("<?= base_url() ?>admin/peserta_kelas");
+            $("#main-content").load("<?=base_url()?>index.php/Admin/peserta_kelas");
             $("#page-title").text("Peserta Kelas");
         });
 
         $("#kurikulum").click(function() {
-            $("#main-content").load("<?= base_url() ?>admin/kurikulum");
+            $("#main-content").load("<?=base_url()?>index.php/Admin/kurikulum");
             $("#page-title").text("Kurikulum");
         });
 
@@ -454,11 +454,11 @@
             if (confirm("Anda yakin ingin logout?")) {
                 $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>admin/logout",
+                    url: "<?=base_url()?>index.php/Admin/logout",
                     data: {}
                 }).done(function(msg) {
                     if (msg == 1 || msg == "1") {
-                        document.location.replace("<?= base_url() ?>auth/admin");
+                        document.location.replace("<?=base_url()?>index.php/Auth/admin");
                     }
                 })
             } else {

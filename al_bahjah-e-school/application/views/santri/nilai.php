@@ -47,7 +47,7 @@
 
         $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>nilaimatapelajaran/getDataByIdSantri",
+                url: "<?=base_url()?>index.php/NilaiMataPelajaran/getDataByIdSantri",
                 data: {}
             })
             .done(function(msg) {

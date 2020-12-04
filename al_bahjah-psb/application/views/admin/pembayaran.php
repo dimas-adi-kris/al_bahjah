@@ -40,7 +40,7 @@
                             </tr>
                         </thead>
                         <!-- <tfoot>
-                  
+
                   </tfoot> -->
                     </table>
                 </div>
@@ -210,7 +210,7 @@
             var formData = $(this).serialize();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>Pembayaran/simpanData",
+                    url: "<?=base_url()?>Pembayaran/simpanData",
                     data: formData
                 })
 
@@ -239,7 +239,7 @@
             if (confirm("Apakah anda yakin ingin menghapus bukti pembayaran ini?")) {
                 $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>pembayaran/hapusData",
+                    url: "<?=base_url()?>Pembayaran/hapusData",
                     data: {
                         id_pembayaran
                     }
@@ -260,7 +260,7 @@
 
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>pembayaran/getDataById",
+                url: "<?=base_url()?>Pembayaran/getDataById",
                 data: {
                     id_pembayaran
                 }
@@ -292,7 +292,7 @@
             var status = $(this).attr("checked") == "checked" ? "BELUM" : "TERVERIFIKASI";
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>pembayaran/updateStatusPembayaran",
+                url: "<?=base_url()?>Pembayaran/updateStatusPembayaran",
                 data: {
                     id_pembayaran,
                     status
@@ -311,7 +311,7 @@
         function getProgram() {
             return $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>program/getProgram",
+                url: "<?=base_url()?>Program/getProgram",
                 data: {}
             })
         }

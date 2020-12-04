@@ -39,7 +39,7 @@
                         <tbody>
                         </tbody>
                         <!-- <tfoot>
-                  
+
                   </tfoot> -->
                     </table>
                 </div>
@@ -168,7 +168,7 @@
             tableListPembayaran.clear()
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>pembayaran/getData",
+                    url: "<?=base_url()?>index.php/Pembayaran/getData",
                     data: {}
                 })
 
@@ -180,7 +180,7 @@
                             (function(i) {
                                 $.ajax({
                                         method: "POST",
-                                        url: "<?= base_url() ?>santri/getDataSantriById",
+                                        url: "<?=base_url()?>index.php/Santri/getDataSantriById",
                                         data: {
                                             id_santri: (res[i]['id_santri'])
                                         },
@@ -234,7 +234,7 @@
             var status = $(this).attr("checked") == "checked" ? "BELUM" : "TERVERIFIKASI";
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>pembayaran/updateStatusPembayaran",
+                url: "<?=base_url()?>index.php/Pembayaran/updateStatusPembayaran",
                 data: {
                     id_pembayaran,
                     status
@@ -253,7 +253,7 @@
         function renderOptionSantri(currentValue) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>santri/getDataSantri",
+                url: "<?=base_url()?>index.php/Santri/getDataSantri",
                 data: {}
             }).done(function(msg) {
                 var santri = JSON.parse(msg);
@@ -284,7 +284,7 @@
         function fillName(id_santri) {
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>santri/getDataSantriById",
+                    url: "<?=base_url()?>index.php/Santri/getDataSantriById",
                     data: {
                         id_santri
                     },
@@ -301,12 +301,12 @@
 
         function getCalonSantri(id_calon_santri) {
             if (id_calon_santri) {
-                url = "<?= base_url() ?>santri/getCalonSantriById";
+                url = "<?=base_url()?>index.php/Santri/getCalonSantriById";
                 var data = {
                     id_calon_santri
                 }
             } else {
-                url = "<?= base_url() ?>santri/getCalonSantri";
+                url = "<?=base_url()?>index.php/Santri/getCalonSantri";
                 var data = {}
             }
 
@@ -333,7 +333,7 @@
             // console.log(formData);
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>Pembayaran/simpanData",
+                    url: "<?=base_url()?>index.php/Pembayaran/simpanData",
                     data: formData
                 })
 
@@ -361,7 +361,7 @@
             if (confirm("Apakah anda yakin ingin menghapus bukti pembayaran ini?")) {
                 $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>pembayaran/hapusData",
+                    url: "<?=base_url()?>index.php/Pembayaran/hapusData",
                     data: {
                         id_pembayaran
                     }
@@ -382,7 +382,7 @@
 
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>pembayaran/getDataById",
+                url: "<?=base_url()?>index.php/Pembayaran/getDataById",
                 data: {
                     id_pembayaran
                 }

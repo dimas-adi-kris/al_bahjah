@@ -12,13 +12,13 @@
     <title> Login </title>
 
     <!-- Custom fonts for this template-->
-    <link href="<?= base_url() ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link rel="shortcut icon" href="<?= base_url() ?>assets/img/icon-albahjah-300x300.png" type="image/x-icon">
+    <link rel="shortcut icon" href="<?=base_url()?>assets/img/icon-albahjah-300x300.png" type="image/x-icon">
 
 
     <!-- Custom styles for this template-->
-    <link href="<?= base_url() ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/sb-admin-2.min.css" rel="stylesheet">
 
     <style>
         .login-or {
@@ -116,14 +116,14 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?=base_url()?>assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?=base_url()?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="<?= base_url() ?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?=base_url()?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<?= base_url() ?>assets/js/sb-admin-2.min.js"></script>
+    <script src="<?=base_url()?>assets/js/sb-admin-2.min.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -136,7 +136,7 @@
                 ).attr('disabled', true);
                 $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>auth/autentikasi_admin",
+                    url: "<?=base_url()?>Auth/autentikasi_admin",
                     data: form
                 }).done(function(msg) {
                     if (msg == 0 || msg == "0") {
@@ -144,7 +144,7 @@
                     } else if (msg == 1 || msg == "1") {
                         $("#alert").html(`<div class="alert alert-danger" role="alert">Akses Ditolak</div>`);
                     } else {
-                        window.location.replace("<?= base_url() ?>admin");
+                        window.location.replace("<?=base_url()?>Admin");
                     }
                     $("#login-button").attr('disabled', false);
                     $(".spinner-border").remove();

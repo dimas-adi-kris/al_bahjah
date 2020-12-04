@@ -142,7 +142,7 @@
                 tabelListJadwalUjian.clear();
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>jadwalujian/getJadwalUjian",
+                        url: "<?=base_url()?>JadwalUjian/getJadwalUjian",
                         data: {}
                     })
 
@@ -185,7 +185,7 @@
                 var formData = $(this).serialize();
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>jadwalujian/tambahJadwalUjian",
+                        url: "<?=base_url()?>JadwalUjian/tambahJadwalUjian",
                         data: formData
                     })
                     .done(function(msg) {
@@ -211,7 +211,7 @@
                 if (confirm("Apakah anda yakin ingin menghapus jadwal ini?")) {
                     $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>jadwalujian/hapusJadwalUjian",
+                        url: "<?=base_url()?>JadwalUjian/hapusJadwalUjian",
                         data: {
                             id_jadwal_ujian
                         }
@@ -228,7 +228,7 @@
                 var id_jadwal_ujian = $(this).attr('id_jadwal_ujian');
                 $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>jadwalujian/getJadwalUjianById",
+                    url: "<?=base_url()?>JadwalUjian/getJadwalUjianById",
                     data: {
                         id_jadwal_ujian
                     }

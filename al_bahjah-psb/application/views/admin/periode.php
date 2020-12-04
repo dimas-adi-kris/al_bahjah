@@ -96,7 +96,7 @@
             tabelListPeriode.clear();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>periode/getPeriode",
+                    url: "<?=base_url()?>periode/getPeriode",
                     data: {}
                 })
                 .done(function(msg) {
@@ -139,7 +139,7 @@
                 .append("<option selected='selected' value'0'>[pilih program]</option>");
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>index.php/Periode/getProgram",
+                    url: "<?=base_url()?>index.php/Periode/getProgram",
                     data: {}
                 })
                 .done(function(msg) {
@@ -180,7 +180,7 @@
             var formData = $(this).serialize();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>index.php/Periode/simpanData",
+                    url: "<?=base_url()?>index.php/Periode/simpanData",
                     data: formData
                 })
                 .done(function(msg) {
@@ -207,7 +207,7 @@
             if (confirm('Anda Yakin Menghapus Data')) {
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>periode/hapusPeriode",
+                        url: "<?=base_url()?>periode/hapusPeriode",
                         data: {
                             id_periode
                         }
@@ -228,7 +228,7 @@
 
             $.ajax({
                     method: "POST",
-                    url: '<?= base_url() ?>index.php/Periode/getPeriodeById',
+                    url: '<?=base_url()?>index.php/Periode/getPeriodeById',
                     data: {
                         id_periode
                     }

@@ -29,7 +29,7 @@
                         <tbody>
                         </tbody>
                         <!-- <tfoot>
-                  
+
                   </tfoot> -->
                     </table>
                 </div>
@@ -133,7 +133,7 @@
 
         $.ajax({
             method: "POST",
-            url: "<?= base_url() ?>santri/getIdSantri",
+            url: "<?=base_url()?>index.php/Santri/getIdSantri",
             data: {}
         }).done(function(msg) {
             $("#id_santri").val(msg);
@@ -143,7 +143,7 @@
             tableListPembayaran.clear()
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>pembayaran/getDataByIdSantri",
+                    url: "<?=base_url()?>index.php/Pembayaran/getDataByIdSantri",
                     data: {}
                 })
 
@@ -191,7 +191,7 @@
             var formData = $(this).serialize();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>Pembayaran/simpanData",
+                    url: "<?=base_url()?>index.php/Pembayaran/simpanData",
                     data: formData
                 })
 

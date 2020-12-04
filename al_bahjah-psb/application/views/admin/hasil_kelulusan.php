@@ -35,7 +35,7 @@
                             </tr>
                         </thead>
                         <!-- <tfoot>
-                
+
                 </tfoot> -->
                     </table>
                 </div>
@@ -133,10 +133,10 @@
         });
 
         function renderTabelListHasilKelulusan(id_program) {
-            var url = "<?= base_url() ?>hasilkelulusan/getHasilKelulusan";
+            var url = "<?=base_url()?>HasilKelulusan/getHasilKelulusan";
             var data = {};
             if (id_program) {
-                url = "<?= base_url() ?>hasilkelulusan/getDataByProgram";
+                url = "<?=base_url()?>HasilKelulusan/getDataByProgram";
                 data = {
                     id_program
                 };
@@ -199,7 +199,7 @@
             var status = $(this).attr("checked") == "checked" ? "BELUM DITERIMA" : "DITERIMA";
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>hasilkelulusan/updateStatusHasilKelulusan",
+                url: "<?=base_url()?>HasilKelulusan/updateStatusHasilKelulusan",
                 data: {
                     id_hasil_kelulusan,
                     status
@@ -218,7 +218,7 @@
         function getProgram() {
             return $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>program/getProgram",
+                url: "<?=base_url()?>Program/getProgram",
                 data: {}
             })
         }

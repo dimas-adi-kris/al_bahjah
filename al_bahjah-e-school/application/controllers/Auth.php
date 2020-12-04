@@ -17,7 +17,7 @@ class Auth extends CI_Controller
         $this->load->view('auth/auth');
     }
 
-    public function santri_login()
+    public function akunLogin()
     {
         $this->load->view('auth/login');
     }
@@ -45,14 +45,21 @@ class Auth extends CI_Controller
         }
     }
 
-    public function autentikasi_santri()
+    public function autentikasi()
     {
         $email = $_POST['email'];
         $user = $this->AuthModel->getDataByEmail($email);
         if ($user) {
             $password = $_POST['password'];
             if (password_verify($password, $user['password'])) {
-                if ($user['id_role'] == 4) {
+                if ($user['id_role'] == 1) {
+                    $status = 3;
+                    $this->session->set_userdata('email', $email);
+                    $this->session->set_userdata('id_role', $user['id_role']);
+                    $this->session->set_userdata('id_user', $user['id_user']);
+                    $this->session->unset_userdata('otp_pembayaran');
+                    $this->session->unset_userdata('id_pembayaran');
+                } elseif ($user['id_role'] == 4) {
                     $status = 2;
                     $this->session->set_userdata('email', $email);
                     $this->session->set_userdata('id_user', $user['id_user']);

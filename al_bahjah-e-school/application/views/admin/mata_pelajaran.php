@@ -156,7 +156,7 @@
             tabelListMataPelajaran.clear();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>MataPelajaran/getDataJoinAll",
+                    url: "<?=base_url()?>index.php/MataPelajaran/getDataJoinAll",
                     data: {}
                 })
                 .done(function(msg) {
@@ -201,7 +201,7 @@
         function renderOptionKurikulum(currentValue) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>kurikulum/getData",
+                url: "<?=base_url()?>index.php/Kurikulum/getData",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);
@@ -248,7 +248,7 @@
             // console.log(formData);
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>MataPelajaran/simpanData",
+                    url: "<?=base_url()?>index.php/MataPelajaran/simpanData",
                     data: formData
                 })
                 .done(function(msg) {
@@ -278,7 +278,7 @@
 
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>MataPelajaran/hapusData",
+                        url: "<?=base_url()?>index.php/MataPelajaran/hapusData",
                         data: {
                             id_mata_pelajaran: id_mata_pelajaran
                         }
@@ -299,7 +299,7 @@
             // console.log(id_mata_pelajaran);
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>MataPelajaran/getDataById",
+                    url: "<?=base_url()?>index.php/MataPelajaran/getDataById",
                     data: {
                         id_mata_pelajaran: id_mata_pelajaran
                     }
@@ -335,7 +335,7 @@
         // Render Filter Kurikulum
         $.ajax({
             method: "POST",
-            url: "<?= base_url(); ?>kurikulum/getData",
+            url: "<?=base_url();?>index.php/Kurikulum/getData",
             data: {}
         }).done(function(msg) {
             var res = JSON.parse(msg);

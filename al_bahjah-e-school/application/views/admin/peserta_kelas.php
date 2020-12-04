@@ -117,7 +117,7 @@
             tabelListPesertaKelas.clear();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>pesertakelas/getDataJoinAll",
+                    url: "<?=base_url()?>index.php/PesertaKelas/getDataJoinAll",
                     data: {}
                 })
                 .done(function(msg) {
@@ -152,7 +152,7 @@
                         (function(i) {
                             $.ajax({
                                 method: "POST",
-                                url: "<?= base_url() ?>santri/getCalonSantriById",
+                                url: "<?=base_url()?>index.php/Santri/getCalonSantriById",
                                 data: {
                                     id_calon_santri: res[i]['id_calon_santri']
                                 }
@@ -182,7 +182,7 @@
         function renderOptionKelas(currentValue) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>kelasmatapelajaran/getDataJoinAll",
+                url: "<?=base_url()?>index.php/KelasMataPelajaran/getDataJoinAll",
                 data: {}
             }).done(function(msg) {
                 var santri = JSON.parse(msg);
@@ -210,7 +210,7 @@
         function renderOptionSantri(currentValue) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>santri/getDataSantri",
+                url: "<?=base_url()?>index.php/Santri/getDataSantri",
                 data: {}
             }).done(function(msg) {
                 var santri = JSON.parse(msg);
@@ -241,7 +241,7 @@
         function fillName(id_santri) {
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>santri/getDataSantriById",
+                    url: "<?=base_url()?>index.php/Santri/getDataSantriById",
                     data: {
                         id_santri
                     },
@@ -270,7 +270,7 @@
             var formData = $(this).serialize();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>pesertakelas/simpanData",
+                    url: "<?=base_url()?>index.php/PesertaKelas/simpanData",
                     data: formData
                 })
                 .done(function(msg) {
@@ -297,7 +297,7 @@
             if (confirm('Anda Yakin Menghapus Data')) {
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>pesertakelas/hapusData",
+                        url: "<?=base_url()?>index.php/PesertaKelas/hapusData",
                         data: {
                             id_peserta_kelas
                         }
@@ -317,7 +317,7 @@
             var id_peserta_kelas = $(this).attr('id_peserta_kelas');
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>pesertakelas/getDataById",
+                    url: "<?=base_url()?>index.php/PesertaKelas/getDataById",
                     data: {
                         id_peserta_kelas
                     }
@@ -340,7 +340,7 @@
         function renderFilterMataPelajaran(kelas) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url(); ?>matapelajaran/getDataJoinAll",
+                url: "<?=base_url();?>index.php/MataPelajaran/getDataJoinAll",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);
@@ -363,7 +363,7 @@
         function renderFilterKelasMataPelajaran(kelas, mata_pelajaran) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url(); ?>kelasmatapelajaran/getDataJoinAll",
+                url: "<?=base_url();?>index.php/KelasMataPelajaran/getDataJoinAll",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);

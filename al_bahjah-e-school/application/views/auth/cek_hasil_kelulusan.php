@@ -32,7 +32,7 @@
                         </form>
                         <hr />
                         <div class="text-center">
-                            <a href="<?= base_url() ?>auth/santri_login" class="btn btn-link c-s login">Sudah punya akun? Login!</a>
+                            <a href="<?=base_url()?>index.php/Auth/santri_login" class="btn btn-link c-s login">Sudah punya akun? Login!</a>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
             var formData = $(this).serialize();
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>user/cekHasilKelulusan",
+                url: "<?=base_url()?>index.php/User/cekHasilKelulusan",
                 data: formData
             }).done(function(msg) {
                 var res = JSON.parse(msg);
@@ -73,7 +73,7 @@
 
                 } else if (res['status'] == '3' || res['status'] == 3) {
                     alert("Selamat, anda dinyatakan lulus. Silahkan lakukan validasi dan registrasi santri");
-                    document.location.replace('<?= base_url(); ?>auth/registrasi_validasi');
+                    document.location.replace('<?=base_url();?>index.php/Auth/registrasi_validasi');
                 } else {
                     console.log(res['data']);
                 }

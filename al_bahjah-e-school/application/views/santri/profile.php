@@ -169,7 +169,7 @@
             function renderDataSantri() {
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>santri/getCalonSantriById",
+                        url: "<?=base_url()?>index.php/Santri/getCalonSantriById",
                         data: {}
                     })
                     .done(function(msg) {
@@ -195,7 +195,7 @@
             function renderDataWali() {
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>santri/getWaliCalonSantriById",
+                        url: "<?=base_url()?>index.php/Santri/getWaliCalonSantriById",
                         data: {}
                     })
                     .done(function(msg) {

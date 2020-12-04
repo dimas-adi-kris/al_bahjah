@@ -142,17 +142,17 @@ $(document).ready(function () {
 
     jQuery.ajax({
         type: "POST",
-        url: "<?=base_url(); ?>auth/do_upload",
+        url: "<?=base_url();?>index.php/Auth/do_upload",
         data: form_data,
         processData: false,
         contentType: false,
         success: function(res) {
             alert("Upload Berkas Berhasil");
         }
-    }); 
+    });
 });
 
-    
+
     // $("#simpan_berkas").submit(function(e){
     //     e.preventDefault();
     //     $.ajax({
@@ -169,6 +169,6 @@ $(document).ready(function () {
 
     //     });
     // });
-    
+
 });
 </script>

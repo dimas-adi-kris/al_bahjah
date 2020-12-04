@@ -144,7 +144,7 @@
             tabelListKelasMataPelajaran.clear();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>KelasMataPelajaran/getDataJoinAll",
+                    url: "<?=base_url()?>index.php/KelasMataPelajaran/getDataJoinAll",
                     data: {}
                 })
                 .done(function(msg) {
@@ -203,7 +203,7 @@
         function renderOptionMataPelajaran(currentValue) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>matapelajaran/getDataJoinAll",
+                url: "<?=base_url()?>index.php/MataPelajaran/getDataJoinAll",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);
@@ -230,7 +230,7 @@
         function renderOptionTahunPelajaran(currentValue) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>tahunpelajaran/getData",
+                url: "<?=base_url()?>index.php/TahunPelajaran/getData",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);
@@ -257,7 +257,7 @@
         function renderOptionRuang(currentValue) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>ruang/getData",
+                url: "<?=base_url()?>index.php/Ruang/getData",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);
@@ -302,7 +302,7 @@
             // console.log(formData);
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>KelasMataPelajaran/simpanData",
+                    url: "<?=base_url()?>index.php/KelasMataPelajaran/simpanData",
                     data: formData
                 })
                 .done(function(msg) {
@@ -332,7 +332,7 @@
 
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>KelasMataPelajaran/hapusData",
+                        url: "<?=base_url()?>index.php/KelasMataPelajaran/hapusData",
                         data: {
                             id_kelas_mata_pelajaran: id_kelas_mata_pelajaran
                         }
@@ -352,7 +352,7 @@
             var id_kelas_mata_pelajaran = $(this).attr('id_kelas_mata_pelajaran');
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>KelasMataPelajaran/getDataById",
+                    url: "<?=base_url()?>index.php/KelasMataPelajaran/getDataById",
                     data: {
                         id_kelas_mata_pelajaran: id_kelas_mata_pelajaran
                     }
@@ -384,7 +384,7 @@
         function renderFilterMataPelajaran(kelas) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url(); ?>matapelajaran/getDataJoinAll",
+                url: "<?=base_url();?>matapelajaran/getDataJoinAll",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);
@@ -407,7 +407,7 @@
         function renderFilterTahunPelajaran() {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url(); ?>tahunpelajaran/getData",
+                url: "<?=base_url();?>tahunpelajaran/getData",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);

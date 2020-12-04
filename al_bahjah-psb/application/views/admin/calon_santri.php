@@ -66,10 +66,10 @@
         renderTabelListCalonSantri();
 
         function renderTabelListCalonSantri(id_program) {
-            var url = "<?= base_url() ?>calonsantri/getAllCalonSantriJoin";
+            var url = "<?=base_url()?>CalonSantri/getAllCalonSantriJoin";
             var data = {};
             if (id_program) {
-                url = "<?= base_url() ?>calonsantri/getAllCalonSantriJoinProgram";
+                url = "<?=base_url()?>CalonSantri/getAllCalonSantriJoinProgram";
                 data = {
                     id_program
                 };
@@ -130,7 +130,7 @@
             var status = $(this).attr("checked") == "checked" ? "BELUM" : "TERVERIFIKASI";
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>calonsantri/updateStatusCalonSantri",
+                url: "<?=base_url()?>CalonSantri/updateStatusCalonSantri",
                 data: {
                     id_calon_santri,
                     status
@@ -147,13 +147,13 @@
 
         $("#tabel-list-calon-santri").on('click', '.detail', function() {
             var id = $(this).attr("id_calon_santri");
-            $("#main-content").load("<?= base_url() ?>operator/detail");
+            $("#main-content").load("<?=base_url()?>Operator/detail");
             $("#page-title").text("Calon Santri").remove("#detail_id").append(`<div detail_id="${id}" id="detail_id" hidden></div>`);
         });
 
         $.ajax({
             method: "POST",
-            url: "<?= base_url() ?>program/getProgram",
+            url: "<?=base_url()?>Program/getProgram",
             data: {}
         }).done(function(msg) {
             var res = JSON.parse(msg);

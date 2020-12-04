@@ -149,7 +149,7 @@
             tabelListNilaiMataPelajaran.clear();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>NilaiMataPelajaran/getDataJoinAll",
+                    url: "<?=base_url()?>index.php/NilaiMataPelajaran/getDataJoinAll",
                     data: {}
                 })
                 .done(function(msg) {
@@ -191,7 +191,7 @@
                         (function(i) {
                             $.ajax({
                                 method: "POST",
-                                url: "<?= base_url() ?>santri/getCalonSantriById",
+                                url: "<?=base_url()?>index.php/Santri/getCalonSantriById",
                                 data: {
                                     id_calon_santri: res[i]['id_calon_santri']
                                 }
@@ -233,7 +233,7 @@
         function renderOptionPesertaKelas(currentValue) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>pesertakelas/getDataJoinAll",
+                url: "<?=base_url()?>index.php/PesertaKelas/getDataJoinAll",
                 data: {}
             }).done(function(msg) {
                 var peserta_kelas = JSON.parse(msg);
@@ -244,7 +244,7 @@
                     (function(value) {
                         $.ajax({
                             method: "POST",
-                            url: "<?= base_url() ?>santri/getCalonSantriById",
+                            url: "<?=base_url()?>index.php/Santri/getCalonSantriById",
                             data: {
                                 id_calon_santri: value['id_calon_santri']
                             }
@@ -279,7 +279,7 @@
             var formData = $(this).serialize();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>NilaiMataPelajaran/simpanData",
+                    url: "<?=base_url()?>index.php/NilaiMataPelajaran/simpanData",
                     data: formData
                 })
                 .done(function(msg) {
@@ -309,7 +309,7 @@
 
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>NilaiMataPelajaran/hapusData",
+                        url: "<?=base_url()?>index.php/NilaiMataPelajaran/hapusData",
                         data: {
                             id_nilai_mata_pelajaran: id_nilai_mata_pelajaran
                         }
@@ -329,7 +329,7 @@
             var id_nilai_mata_pelajaran = $(this).attr('id_nilai_mata_pelajaran');
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>NilaiMataPelajaran/getDataById",
+                    url: "<?=base_url()?>index.php/NilaiMataPelajaran/getDataById",
                     data: {
                         id_nilai_mata_pelajaran: id_nilai_mata_pelajaran
                     }
@@ -362,7 +362,7 @@
         function renderFilterMataPelajaran(kelas) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url(); ?>matapelajaran/getDataJoinAll",
+                url: "<?=base_url();?>index.php/MataPelajaran/getDataJoinAll",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);
@@ -385,7 +385,7 @@
         function renderFilterKelasMataPelajaran(kelas, mata_pelajaran) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url(); ?>kelasmatapelajaran/getDataJoinAll",
+                url: "<?=base_url();?>index.php/KelasMataPelajaran/getDataJoinAll",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);
@@ -418,7 +418,7 @@
         function renderFilterTahunPelajaran() {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url(); ?>tahunpelajaran/getData",
+                url: "<?=base_url();?>index.php/TahunPelajaran/getData",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);

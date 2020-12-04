@@ -123,7 +123,7 @@
             tabelListAsatidzKelas.clear();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>asatidzkelas/getDataJoinAll",
+                    url: "<?=base_url()?>index.php/AsatidzKelas/getDataJoinAll",
                     data: {}
                 })
                 .done(function(msg) {
@@ -184,7 +184,7 @@
         function renderOptionAsatidz(currentValue) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>asatidz/getData",
+                url: "<?=base_url()?>index.php/Asatidz/getData",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);
@@ -211,7 +211,7 @@
         function renderOptionKelas(currentValue) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url() ?>kelasmatapelajaran/getDataJoinAll",
+                url: "<?=base_url()?>index.php/KelasMataPelajaran/getDataJoinAll",
                 data: {}
             }).done(function(msg) {
                 var santri = JSON.parse(msg);
@@ -252,7 +252,7 @@
             var formData = $(this).serialize();
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>AsatidzKelas/simpanData",
+                    url: "<?=base_url()?>index.php/AsatidzKelas/simpanData",
                     data: formData
                 })
                 .done(function(msg) {
@@ -280,7 +280,7 @@
 
                 $.ajax({
                         method: "POST",
-                        url: "<?= base_url() ?>AsatidzKelas/hapusData",
+                        url: "<?=base_url()?>index.php/AsatidzKelas/hapusData",
                         data: {
                             id_asatidz_kelas: id_asatidz_kelas
                         }
@@ -300,7 +300,7 @@
             var id_asatidz_kelas = $(this).attr('id_asatidz_kelas');
             $.ajax({
                     method: "POST",
-                    url: "<?= base_url() ?>AsatidzKelas/getDataById",
+                    url: "<?=base_url()?>index.php/AsatidzKelas/getDataById",
                     data: {
                         id_asatidz_kelas: id_asatidz_kelas
                     }
@@ -326,7 +326,7 @@
         function renderFilterMataPelajaran(kelas) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url(); ?>matapelajaran/getDataJoinAll",
+                url: "<?=base_url();?>matapelajaran/getDataJoinAll",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);
@@ -349,7 +349,7 @@
         function renderFilterKelasMataPelajaran(kelas, mata_pelajaran) {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url(); ?>kelasmatapelajaran/getDataJoinAll",
+                url: "<?=base_url();?>kelasmatapelajaran/getDataJoinAll",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);
@@ -382,7 +382,7 @@
         function renderFilterTahunPelajaran() {
             $.ajax({
                 method: "POST",
-                url: "<?= base_url(); ?>tahunpelajaran/getData",
+                url: "<?=base_url();?>tahunpelajaran/getData",
                 data: {}
             }).done(function(msg) {
                 var res = JSON.parse(msg);
