@@ -109,10 +109,10 @@ class UserModel extends CI_Model
         $this->load->library('email', $config);
         $this->email->initialize($config);
 
-        $this->email->from("cerelisasi55@gmail.com", "Sysadmin");
+        $this->email->from("cerelisasi55@gmail.com", "SMAIQu Al-Bahjah");
         $this->email->to('dimaskristianto1999@gmail.com');
-        $this->email->subject("Verify New Account");
-        $this->email->message("Klik link berikut : " . base_url() . "index.php/Auth/verification/" . $kode_aktifasi);
+        $this->email->subject("Verifikasi Akun");
+        $this->email->message("Untuk memverifikasi akun, klik link berikut : " . base_url() . "index.php/Auth/verification/" . $kode_aktifasi);
         $this->email->send();
     }
 }

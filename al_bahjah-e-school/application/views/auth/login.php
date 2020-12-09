@@ -107,41 +107,6 @@
 					</div>
 
 				</div>
-
-				<!-- <div class="col-lg-6 mt-5">
-					<div class="card o-hidden border-0 shadow-lg my-5">
-						<div class="card-body p-0">
-							<div class="row">
-								<div class="col-lg">
-									<div class="p-5">
-										<div class="text-center">
-											<h1 class="h4 text-gray-900 mb-4">Selamat Datang</h1>
-										</div>
-										<form id="login-santri">
-											<div class="form-group">
-												<input type="text" class="form-control form-control-user" id="email"
-													name="email" placeholder="Alamat Email ">
-											</div>
-											<div class="form-group">
-												<input type="password" class="form-control form-control-user"
-													id="password" name="password" placeholder="Password">
-											</div>
-											<button type="submit" class="btn btn-success btn-user btn-block"
-												id="login-button">
-												Login
-											</button>
-										</form>
-										<hr />
-										<div class="text-center">
-											<a href="<?=base_url()?>auth"
-												class=" btn btn-link c-s cek_hasil_kelulusan">Cek Hasil Kelulusan!</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> -->
 			</div>
 		</div>
 	</div>
@@ -189,10 +154,10 @@
 						window.location.replace("<?=base_url()?>index.php/Admin");
 					}
 					else if (msg == '5' || msg == 5) {
-						$("#alert-box").html('<div class="alert alert-danger">Email belum terverifikasi</div>');
-						$("#ver_lagi").html('<div class="alert alert-danger">Tidak menerima </div>');
+						$("#alert-box").html('<div class="alert alert-danger">Email belum terverifikasi. \nTidak menerima email verifikasi?</div>');
+						// $("#ver_lagi").html('<div class="alert alert-danger"></div>');
 					}
-					 else {
+					else {
 						$("#alert").html(
 							`<div class="alert alert-danger" role="alert">Something's wrong. I can feel it</div>`
 							);

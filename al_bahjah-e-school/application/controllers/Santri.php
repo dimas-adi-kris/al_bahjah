@@ -7,6 +7,9 @@ class Santri extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        if ($this->session->userdata('id_role') != 4) {
+            redirect('index.php/auth');
+        }
         $this->load->model('SantriModel');
     }
 
@@ -42,7 +45,7 @@ class Santri extends CI_Controller
 
     public function logout()
     {
-        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('emailSantri');
         $this->session->unset_userdata('id_role');
         echo 1;
     }

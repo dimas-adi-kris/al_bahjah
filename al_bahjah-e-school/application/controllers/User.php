@@ -56,8 +56,8 @@ class User extends CI_Controller
                     $data['id_user'] = $calon_santri['nik'];
                     if ($this->UserModel->insertDataUser($data)) {
                         $data_random = (array) $this->UserModel->getRandomNumber($data['email']);
-                        print_r($data_random[0]);
-                        // $this->UserModel->tes($data_random['kode_aktifasi']);
+                        $kode_aktifasi = $data_random[0]["kode_aktifasi"];
+                        $this->UserModel->tes($kode_aktifasi);
                         if ($this->SantriModel->insertDataSantri($data)) {
                             $status = 4;
                         } else {
@@ -73,7 +73,7 @@ class User extends CI_Controller
         $res = [
             "status" => $status,
             "data" => $data,
-            "random_n" => $data_random[0],
+            "kode" => $kode_aktifasi,
         ];
 
         echo json_encode($res);

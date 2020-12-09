@@ -14,6 +14,9 @@ class Auth extends CI_Controller
 
     public function index()
     {
+        if ($this->session->userdata('')) {
+            # code...
+        }
         $this->load->view('auth/auth');
     }
 
@@ -49,14 +52,13 @@ class Auth extends CI_Controller
     {
         $email = $_POST['email'];
         $user = $this->AuthModel->getDataByEmail($email);
-        print_r($user);
-        die;
+
         if ($user) {
             $password = $_POST['password'];
             if (password_verify($password, $user['password'])) {
                 if ($user['id_role'] == 1) {
                     $status = 3;
-                    $this->session->set_userdata('email', $email);
+                    $this->session->set_userdata('emailAdmin', $email);
                     $this->session->set_userdata('id_role', $user['id_role']);
                     $this->session->set_userdata('id_user', $user['id_user']);
                     $this->session->unset_userdata('otp_pembayaran');
@@ -66,7 +68,7 @@ class Auth extends CI_Controller
                         $status = 5;
                     } else {
                         $status = 2;
-                        $this->session->set_userdata('email', $email);
+                        $this->session->set_userdata('emailSantri', $email);
                         $this->session->set_userdata('id_user', $user['id_user']);
                         $this->session->set_userdata('id_role', $user['id_role']);
                         $this->session->unset_userdata('otp_pembayaran');
@@ -119,7 +121,8 @@ class Auth extends CI_Controller
 
     public function sandbox()
     {
-        print_r(rand(10000000, 100000000));
+        $data = $this->AuthModel->cekAktifasiByKode('353535');
+        print_r($data[0]["Aktif"]);
     }
 
     public function successful()
@@ -129,63 +132,17 @@ class Auth extends CI_Controller
 
     public function verification($Kode_verifikasi)
     {
-        $data = $this->AuthModel->cekaktifasi($Kode_verifikasi);
-        if ($data) {
-            $this->AuthModel->verifikasiemail($Kode_verifikasi);
+        $data = $this->AuthModel->cekAktifasiByKode($Kode_verifikasi);
+        if ($data[0]["Aktif"] == "BELUM_AKTIF") {
+            $this->AuthModel->verifikasiEmail($Kode_verifikasi);
             $this->load->view('auth/successful');
+        } else if ($data[0]["Aktif"] == "AKTIF") {
+            print_r('sudah pernah terdaftar');
+            // $this->AuthModel->verifikasiEmail($Kode_verifikasi);
+            // $this->load->view('auth/successful');
         } else {
             print_r('eror');
         }
     }
 
-    public function tes()
-    {
-        // $data = $_POST['email'];
-        // $data = str_replace('data:application/pdf;base64', '', $data);
-        // $data = str_replace(' ', '+', $data);
-        // $data = base64_decode($data);
-        // $img_name = "test" . random_int(1, 1000) . ".pdf";
-        // $file = FCPATH . "/asset/pdf/" . $img_name;
-        // file_put_contents($file, $data);
-        // $this->db->insert('snapshot', ['image' => $img_name]);
-        // print_r($data);
-        // $email = $this->input->post('email', true);
-
-        $config = [
-            'protocol' => "smtp",
-            'smtp_host' => "ssl://smtp.googlemail.com",
-            'smtp_user' => "cerelisasi55@gmail.com",
-            'smtp_pass' => "po21po32",
-            'smtp_port' => 465,
-            'mailtype' => "html",
-            'charset' => "utf-8",
-            'priority' => 1,
-            'newline' => "\r\n",
-        ];
-
-        $this->load->library('email', $config);
-        $this->email->initialize($config);
-
-        $this->email->from("cerelisasi55@gmail.com", "Sysadmin");
-        $this->email->to('dimaskristianto1999@gmail.com');
-        $this->email->subject("Verify New Account");
-        $this->email->message();
-        // $this->email->attach($file);
-        $this->email->send();
-        print_r('sukses??');
-        // if ($type == "activate") {
-        //     $this->email->subject("Verify New Account");
-        //     $this->email->message('<a href="' . base_url() . 'auth/verify?email=' . $email . '&token=' . urlencode($token) . '&type=activate' . '">Click this link to verify your account</a>');
-        // } else if ($type == "forgot_pass") {
-        //     $this->email->subject("Reset Password");
-        //     $this->email->message('<a href="' . base_url() . 'auth/verify?email=' . $email . '&token=' . urlencode($token) .  '&type=forgot_pass' . '">Click this link to reset your password</a>');
-        // }
-
-        // if ($this->email->send()) {
-        //     return true;
-        // } else {
-        //     echo $this->email->print_debugger();
-        //     die;
-        // }
-    }
 }

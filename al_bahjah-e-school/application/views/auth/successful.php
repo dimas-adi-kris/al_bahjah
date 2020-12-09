@@ -78,7 +78,7 @@
 										<h1 class="h6 text-gray-900 mb-4">Email berhasil diverifikasi. Silahkan login</h1>
 										<hr>
 										<div class="text-center">
-											<a href="<?=base_url()?>index.php/Auth/login"
+											<a href="<?=base_url()?>index.php/Auth"
 												class=" btn btn-link c-s cek_hasil_kelulusan">Login</a>
 										</div>
 									</div>

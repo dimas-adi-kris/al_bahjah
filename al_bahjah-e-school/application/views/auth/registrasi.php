@@ -126,7 +126,7 @@
 					data: formData
 				}).done(function(msg) {
 					var res = JSON.parse(msg);
-					console.log(res['random_n']);
+					// console.log(res['random_n']);
 					// 0 Error
 					// 1 Santri sudah melakukan pendaftaran
 					// 2 Email telah terdaftar
@@ -147,9 +147,9 @@
 						$("#alert-box").html('<div class="alert alert-danger">Password tidak cocok</div>');
 					}
 					else if (res['status'] == '4' || res['status'] == 4) {
-						console.log(res['random_n']);
+						// console.log(res['random_n']);
 						alert("Registrasi Santri berhasil, silahkan login");
-						// document.location.replace('<?=base_url()?>index.php/');
+						document.location.replace('<?=base_url()?>index.php/');
 					}
 					else {
 						alert("Error");
