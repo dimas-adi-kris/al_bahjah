@@ -3,5 +3,7 @@
         "activityBar.background": "#103508",
         "titleBar.activeBackground": "#174A0B",
         "titleBar.activeForeground": "#F2FDF0"
-    }
+    },
+    "phpformatter.composer" : true,
+    "phpformatter.arguments":["--rules=@PSR2"]
 }

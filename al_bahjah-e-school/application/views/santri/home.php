@@ -180,7 +180,7 @@
                         <img src="<?=base_url()?>dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block" id="nama_profile">Alexander Pierce</a>
                     </div>
                 </div>
 
@@ -323,8 +323,18 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#main-content").load("<?=base_url()?>index.php/Santri/dashboard");
 
+        $("#main-content").load("<?=base_url()?>index.php/Santri/dashboard");
+        // $("#nama_profile").text()
+        $.ajax({
+            method: "POST",
+            url: "<?=base_url()?>index.php/Santri/getCalonSantriById",
+            data: {}
+        })
+        .done(function(msg) {
+            var res = JSON.parse(msg);
+            $("#nama_profile").text(res['nama']);
+        });
         $("#dashboard").click(function() {
             $("#main-content").load("<?=base_url()?>index.php/Santri/dashboard");
             $("#page-title").text("Dashboard");
@@ -358,7 +368,7 @@
                     data: {}
                 }).done(function(msg) {
                     if (msg == 1 || msg == "1") {
-                        document.location.replace("<?=base_url()?>index.php/Auth/santri_login");
+                        document.location.replace("<?=base_url()?>index.php/");
                     }
                 })
             } else {

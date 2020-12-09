@@ -6,7 +6,7 @@
                 <div class="col-lg">
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Cek Hasil Kelulusan Calon Santri</h1>
+                            <h1 class="h4 text-gray-900 mb-4">Validasi Hasil Kelulusan Calon Santri</h1>
 
                         </div>
                         <div id="alert-box"></div>
@@ -27,7 +27,7 @@
                                 <input type="text" class="form-control form-control-user" id="nama_wali" name="nama_wali" placeholder="Nama Wali">
                             </div>
                             <button type="submit" class="btn btn-success btn-user btn-block" id="btn-submit">
-                                Cek Hasil Kelulusan
+                                Kirim
                             </button>
                         </form>
                         <hr />

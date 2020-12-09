@@ -72,7 +72,7 @@
 
     <script>
         $(document).ready(function() {
-            $("#main-content").load("<?=base_url()?>index.php/Auth/cek_hasil_kelulusan");
+            $("#main-content").load("<?=base_url()?>index.php/Auth/akunLogin");
 
             $("#main-content").on('click', '.cek_hasil_kelulusan', function() {
                 event.preventDefault();

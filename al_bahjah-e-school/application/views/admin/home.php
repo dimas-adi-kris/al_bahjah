@@ -54,7 +54,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -172,7 +172,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="#" class="brand-link">
                 <img src="<?=base_url()?>dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">AdminLTE 3</span>
             </a>
@@ -201,10 +201,10 @@
                 <p> Profile </p>
               </a>
             </li> -->
-                        <li class="nav-header"> User </li>
+                        <li class="nav-header"> Admin </li>
                         <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link" id="dashboard">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-circle nav-icon"></i>
                                 <p>
                                     Dashboard
                                 </p>
@@ -389,65 +389,243 @@
         //   $("#page-title").text("Profile Sekolah");
         //   $("#main-content").load("<?=base_url()?>index.php/Index.php/profile/getProfilePage");
         // });
+        $.ajax({
+            method: "POST",
+            url: "<?=base_url()?>index.php/Santri/getCalonSantriById",
+            data: {}
+        })
+        .done(function(msg) {
+            var res = JSON.parse(msg);
+            $("#nama_profile").text(res['nama']);
+        });
 
         $("#dashboard").click(function() {
             $("#main-content").load("<?=base_url()?>index.php/Admin/dashboard");
             $("#page-title").text("Dashboard");
+
+            $("#dashboard .far").attr('class','fas fa-circle nav-icon');
+            $("#santri .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#pembayaran .fas").attr('class','far fa-circle nav-icon');
+            $("#ruang .fas").attr('class','far fa-circle nav-icon');
+            $("#kelas_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#nilai_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#tahun_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#peserta_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#kurikulum .fas").attr('class','far fa-circle nav-icon');
+
         });
 
         $("#santri").click(function() {
             $("#main-content").load("<?=base_url()?>index.php/Admin/santri");
             $("#page-title").text("Santri");
+
+            $("#dashboard .fas").attr('class','far fa-circle nav-icon');
+            $("#santri .far").attr('class','fas fa-circle nav-icon');
+            $("#asatidz .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#pembayaran .fas").attr('class','far fa-circle nav-icon');
+            $("#ruang .fas").attr('class','far fa-circle nav-icon');
+            $("#kelas_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#nilai_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#tahun_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#peserta_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#kurikulum .fas").attr('class','far fa-circle nav-icon');
+
+
         });
 
         $("#asatidz").click(function() {
             $("#main-content").load("<?=base_url()?>index.php/Admin/asatidz");
             $("#page-title").text("Asatidz");
+
+            $("#dashboard .fas").attr('class','far fa-circle nav-icon');
+            $("#santri .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz .far").attr('class','fas fa-circle nav-icon');
+            $("#asatidz_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#pembayaran .fas").attr('class','far fa-circle nav-icon');
+            $("#ruang .fas").attr('class','far fa-circle nav-icon');
+            $("#kelas_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#nilai_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#tahun_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#peserta_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#kurikulum .fas").attr('class','far fa-circle nav-icon');
+
         });
 
         $("#asatidz_kelas").click(function() {
             $("#main-content").load("<?=base_url()?>index.php/Admin/asatidz_kelas");
             $("#page-title").text("Asatidz Kelas");
+
+            $("#dashboard .fas").attr('class','far fa-circle nav-icon');
+            $("#santri .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz_kelas .far").attr('class','fas fa-circle nav-icon');
+            $("#pembayaran .fas").attr('class','far fa-circle nav-icon');
+            $("#ruang .fas").attr('class','far fa-circle nav-icon');
+            $("#kelas_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#nilai_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#tahun_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#peserta_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#kurikulum .fas").attr('class','far fa-circle nav-icon');
+
         });
 
         $("#pembayaran").click(function() {
             $("#main-content").load("<?=base_url()?>index.php/Admin/pembayaran");
             $("#page-title").text("Pembayaran");
+
+            $("#dashboard .fas").attr('class','far fa-circle nav-icon');
+            $("#santri .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#pembayaran .far").attr('class','fas fa-circle nav-icon');
+            $("#ruang .fas").attr('class','far fa-circle nav-icon');
+            $("#kelas_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#nilai_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#tahun_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#peserta_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#kurikulum .fas").attr('class','far fa-circle nav-icon');
+
         });
 
         $("#ruang").click(function() {
             $("#main-content").load("<?=base_url()?>index.php/Admin/ruang");
             $("#page-title").text("Ruang");
+
+            $("#dashboard .fas").attr('class','far fa-circle nav-icon');
+            $("#santri .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#pembayaran .fas").attr('class','far fa-circle nav-icon');
+            $("#ruang .far").attr('class','fas fa-circle nav-icon');
+            $("#kelas_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#nilai_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#tahun_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#peserta_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#kurikulum .fas").attr('class','far fa-circle nav-icon');
+
         });
 
         $("#kelas_mata_pelajaran").click(function() {
             $("#main-content").load("<?=base_url()?>index.php/Admin/kelas_mata_pelajaran");
             $("#page-title").text("Kelas Mata Pelajaran");
+
+            $("#dashboard .fas").attr('class','far fa-circle nav-icon');
+            $("#santri .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#pembayaran .fas").attr('class','far fa-circle nav-icon');
+            $("#ruang .fas").attr('class','far fa-circle nav-icon');
+            $("#kelas_mata_pelajaran .far").attr('class','fas fa-circle nav-icon');
+            $("#mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#nilai_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#tahun_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#peserta_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#kurikulum .fas").attr('class','far fa-circle nav-icon');
+
         });
 
         $("#mata_pelajaran").click(function() {
             $("#main-content").load("<?=base_url()?>index.php/Admin/mata_pelajaran");
             $("#page-title").text("Mata Pelajaran");
+
+            $("#dashboard .fas").attr('class','far fa-circle nav-icon');
+            $("#santri .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#pembayaran .fas").attr('class','far fa-circle nav-icon');
+            $("#ruang .fas").attr('class','far fa-circle nav-icon');
+            $("#kelas_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#mata_pelajaran .far").attr('class','fas fa-circle nav-icon');
+            $("#nilai_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#tahun_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#peserta_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#kurikulum .fas").attr('class','far fa-circle nav-icon');
+
         });
 
         $("#nilai_mata_pelajaran").click(function() {
             $("#main-content").load("<?=base_url()?>index.php/Admin/nilai_mata_pelajaran");
             $("#page-title").text("Nilai Mata Pelajaran");
+
+            $("#dashboard .fas").attr('class','far fa-circle nav-icon');
+            $("#santri .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#pembayaran .fas").attr('class','far fa-circle nav-icon');
+            $("#ruang .fas").attr('class','far fa-circle nav-icon');
+            $("#kelas_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#nilai_mata_pelajaran .far").attr('class','fas fa-circle nav-icon');
+            $("#tahun_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#peserta_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#kurikulum .fas").attr('class','far fa-circle nav-icon');
+
         });
 
         $("#tahun_pelajaran").click(function() {
             $("#main-content").load("<?=base_url()?>index.php/Admin/tahun_pelajaran");
             $("#page-title").text("Tahun Pelajaran");
+
+            $("#dashboard .fas").attr('class','far fa-circle nav-icon');
+            $("#santri .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#pembayaran .fas").attr('class','far fa-circle nav-icon');
+            $("#ruang .fas").attr('class','far fa-circle nav-icon');
+            $("#kelas_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#nilai_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#tahun_pelajaran .far").attr('class','fas fa-circle nav-icon');
+            $("#peserta_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#kurikulum .fas").attr('class','far fa-circle nav-icon');
+
         });
 
         $("#peserta_kelas").click(function() {
             $("#main-content").load("<?=base_url()?>index.php/Admin/peserta_kelas");
             $("#page-title").text("Peserta Kelas");
+
+            $("#dashboard .fas").attr('class','far fa-circle nav-icon');
+            $("#santri .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#pembayaran .fas").attr('class','far fa-circle nav-icon');
+            $("#ruang .fas").attr('class','far fa-circle nav-icon');
+            $("#kelas_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#nilai_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#tahun_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#peserta_kelas .far").attr('class','fas fa-circle nav-icon');
+            $("#kurikulum .fas").attr('class','far fa-circle nav-icon');
+
         });
 
         $("#kurikulum").click(function() {
             $("#main-content").load("<?=base_url()?>index.php/Admin/kurikulum");
             $("#page-title").text("Kurikulum");
+
+            $("#dashboard .fas").attr('class','far fa-circle nav-icon');
+            $("#santri .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz .fas").attr('class','far fa-circle nav-icon');
+            $("#asatidz_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#pembayaran .fas").attr('class','far fa-circle nav-icon');
+            $("#ruang .fas").attr('class','far fa-circle nav-icon');
+            $("#kelas_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#nilai_mata_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#tahun_pelajaran .fas").attr('class','far fa-circle nav-icon');
+            $("#peserta_kelas .fas").attr('class','far fa-circle nav-icon');
+            $("#kurikulum .far").attr('class','fas fa-circle nav-icon');
+
         });
 
         $("#logout").click(function() {
@@ -458,7 +636,7 @@
                     data: {}
                 }).done(function(msg) {
                     if (msg == 1 || msg == "1") {
-                        document.location.replace("<?=base_url()?>index.php/Auth/admin");
+                        document.location.replace("<?=base_url()?>index.php/");
                     }
                 })
             } else {

@@ -363,14 +363,9 @@
 
                         renderDataWali(wali_calon_santri);
                     });
-
-
             }
 
-
             function renderDataWali(wali_calon_santri) {
-
-
                 // SET DATA TABEL WALI
                 $("#nama_wali_santri").text(wali_calon_santri['nama']);
                 $("#no_ktp_wali_santri").text(wali_calon_santri['no_ktp']);

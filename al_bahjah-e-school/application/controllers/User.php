@@ -29,7 +29,7 @@ class User extends CI_Controller
 
         $res = [
             'status' => $status,
-            'data' => $res
+            'data' => $res,
         ];
 
         echo json_encode($res);
@@ -55,6 +55,9 @@ class User extends CI_Controller
                     $data['id_calon_santri'] = $id_calon_santri;
                     $data['id_user'] = $calon_santri['nik'];
                     if ($this->UserModel->insertDataUser($data)) {
+                        $data_random = (array) $this->UserModel->getRandomNumber($data['email']);
+                        print_r($data_random[0]);
+                        // $this->UserModel->tes($data_random['kode_aktifasi']);
                         if ($this->SantriModel->insertDataSantri($data)) {
                             $status = 4;
                         } else {
@@ -69,7 +72,8 @@ class User extends CI_Controller
 
         $res = [
             "status" => $status,
-            "data" => $data
+            "data" => $data,
+            "random_n" => $data_random[0],
         ];
 
         echo json_encode($res);
@@ -89,7 +93,7 @@ class User extends CI_Controller
         $wali_calon_santri = (array) $res['wali_calon_santri'];
         $data = [
             'calon_santri' => $calon_santri,
-            'wali_calon_santri' => $wali_calon_santri
+            'wali_calon_santri' => $wali_calon_santri,
         ];
 
         echo json_encode($data);
@@ -105,5 +109,29 @@ class User extends CI_Controller
             $status = 0;
         }
         echo $status;
+    }
+
+    public function tes($kode_aktifasi)
+    {
+        $config = [
+            'protocol' => "smtp",
+            'smtp_host' => "ssl://smtp.googlemail.com",
+            'smtp_user' => "cerelisasi55@gmail.com",
+            'smtp_pass' => "po21po32",
+            'smtp_port' => 465,
+            'mailtype' => "html",
+            'charset' => "utf-8",
+            'priority' => 1,
+            'newline' => "\r\n",
+        ];
+
+        $this->load->library('email', $config);
+        $this->email->initialize($config);
+
+        $this->email->from("cerelisasi55@gmail.com", "Sysadmin");
+        $this->email->to('dimaskristianto1999@gmail.com');
+        $this->email->subject("Verify New Account");
+        $this->email->message("Klik link berikut : " . base_url() . "index.php/Auth/verification/" . $kode_aktifasi);
+        $this->email->send();
     }
 }

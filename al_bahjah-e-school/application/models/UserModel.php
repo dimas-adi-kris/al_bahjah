@@ -7,7 +7,7 @@ class UserModel extends CI_Model
     public function getEmailWali($email_wali)
     {
         $email_wali = urlencode($email_wali);
-        $res = file_get_contents('http://localhost/al_bahjah/al_bahjah-psb/api/getEmailWali/' . $email_wali);
+        $res = file_get_contents('http://localhost/al_bahjah/al_bahjah-psb/api/getEmailWali/' . $emaril_wali);
         return json_decode($res);
     }
 
@@ -28,6 +28,15 @@ class UserModel extends CI_Model
         return json_decode($res);
     }
 
+    public function getRandomNumber($em)
+    {
+        $sql = "SELECT `kode_aktifasi` FROM `user` WHERE `email`='" . $em . "'";
+        $res = $this->db->query($sql);
+
+        return $res->result_array();
+
+    }
+
     public function getDataByEmail($email)
     {
         $sql = "SELECT * FROM user WHERE email='" . $email . "'";
@@ -39,21 +48,26 @@ class UserModel extends CI_Model
     public function insertDataUser($data)
     {
         $password = password_hash($data['password'], PASSWORD_DEFAULT);
+        $kode_aktifasi = rand(10000000, 100000000);
         $sql = "INSERT INTO
             `user`(
                 `id_user`,
                 `id_role`,
                 `password`,
-                `email`
+                `email`,
+                `kode_aktifasi`,
+                `Aktif`
             )
             VALUES(
                 ?,
                 '4',
                 ?,
+                ?,
+                ?,
                 ?
             )
         ";
-        $status = $this->db->query($sql, array($data['id_user'], $password, $data['email']));
+        $status = $this->db->query($sql, array($data['id_user'], $password, $data['email'], $kode_aktifasi, 'BELUM_AKTIF'));
 
         return $status;
     }
@@ -76,5 +90,29 @@ class UserModel extends CI_Model
     {
         $res = file_get_contents('http://localhost/al_bahjah/al_bahjah-psb/api/getHasilKelulusan');
         return json_decode($res);
+    }
+
+    public function tes($kode_aktifasi)
+    {
+        $config = [
+            'protocol' => "smtp",
+            'smtp_host' => "ssl://smtp.googlemail.com",
+            'smtp_user' => "cerelisasi55@gmail.com",
+            'smtp_pass' => "po21po32",
+            'smtp_port' => 465,
+            'mailtype' => "html",
+            'charset' => "utf-8",
+            'priority' => 1,
+            'newline' => "\r\n",
+        ];
+
+        $this->load->library('email', $config);
+        $this->email->initialize($config);
+
+        $this->email->from("cerelisasi55@gmail.com", "Sysadmin");
+        $this->email->to('dimaskristianto1999@gmail.com');
+        $this->email->subject("Verify New Account");
+        $this->email->message("Klik link berikut : " . base_url() . "index.php/Auth/verification/" . $kode_aktifasi);
+        $this->email->send();
     }
 }

@@ -74,27 +74,12 @@
 										<div class="text-center">
 											<h1 class="h4 text-gray-900 mb-4">Selamat Datang</h1>
 										</div>
-										<form id="login-santri">
-										<div id="alert"></div>
-										<div id="ver_lagi"></div>
-											<div class="form-group">
-											<input type="text" class="form-control form-control-user" id="email"
-													name="email" placeholder="Alamat Email ">
-											</div>
-											<div class="form-group">
-												<input type="password" class="form-control form-control-user"
-													id="password" name="password" placeholder="Password">
-											</div>
-											<button type="submit" class="btn btn-success btn-user btn-block"
-												id="login-button">
-												Login
-											</button>
-										</form>
+
+										<h1 class="h6 text-gray-900 mb-4">Email berhasil diverifikasi. Silahkan login</h1>
 										<hr>
 										<div class="text-center">
-										<h1 class="h6 text-gray-900 mb-4">Untuk santri yang baru dinyatakan lulus, silahkan membuat akun baru di link berikut ini</h1>
-											<a href="<?=base_url()?>index.php/Auth"
-												class=" btn btn-link c-s cek_hasil_kelulusan">Buat Akun</a>
+											<a href="<?=base_url()?>index.php/Auth/login"
+												class=" btn btn-link c-s cek_hasil_kelulusan">Login</a>
 										</div>
 									</div>
 								</div>
@@ -107,41 +92,6 @@
 					</div>
 
 				</div>
-
-				<!-- <div class="col-lg-6 mt-5">
-					<div class="card o-hidden border-0 shadow-lg my-5">
-						<div class="card-body p-0">
-							<div class="row">
-								<div class="col-lg">
-									<div class="p-5">
-										<div class="text-center">
-											<h1 class="h4 text-gray-900 mb-4">Selamat Datang</h1>
-										</div>
-										<form id="login-santri">
-											<div class="form-group">
-												<input type="text" class="form-control form-control-user" id="email"
-													name="email" placeholder="Alamat Email ">
-											</div>
-											<div class="form-group">
-												<input type="password" class="form-control form-control-user"
-													id="password" name="password" placeholder="Password">
-											</div>
-											<button type="submit" class="btn btn-success btn-user btn-block"
-												id="login-button">
-												Login
-											</button>
-										</form>
-										<hr />
-										<div class="text-center">
-											<a href="<?=base_url()?>auth"
-												class=" btn btn-link c-s cek_hasil_kelulusan">Cek Hasil Kelulusan!</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> -->
 			</div>
 		</div>
 	</div>

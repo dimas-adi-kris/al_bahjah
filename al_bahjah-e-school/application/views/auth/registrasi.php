@@ -50,6 +50,12 @@
 		.c-s {
 			font-size: .8em;
 		}
+
+		p {
+			font-size: .8em;
+			margin: 0;
+			padding: 0;
+		}
 	</style>
 </head>
 
@@ -72,19 +78,20 @@
 								<div id="alert-box"></div>
 								<form id="registrasi-santri">
 									<div class="form-group">
-										<input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Email Santri" required>
+										<input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Email" required>
 									</div>
+									<p>* Gunakan email yang aktif. Kode verifikasi akan dikirimkan melalui email untuk mengaktifkan akun</p>
 									<div class="form-group row">
 										<div class="col-sm-6 mb-3 mb-sm-0">
-											<input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password" required>
+											<input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Masukkan katasandi" required>
 
 										</div>
 										<div class="col-sm-6">
-											<input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password" required>
+											<input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Ulangi katasandi" required>
 										</div>
 									</div>
 									<button type="submit" class="btn btn-success btn-user btn-block">
-										Register Account
+										Daftarkan Akun
 									</button>
 								</form>
 							</div>
@@ -119,6 +126,7 @@
 					data: formData
 				}).done(function(msg) {
 					var res = JSON.parse(msg);
+					console.log(res['random_n']);
 					// 0 Error
 					// 1 Santri sudah melakukan pendaftaran
 					// 2 Email telah terdaftar
@@ -127,19 +135,23 @@
 					if (res['status'] == '0' || res['status'] == 0) {
 						alert("Gagal melakukan registrai, silahkan hubungi operator")
 
-					} else if (res['status'] == '1' || res['status'] == 1) {
+					}
+					else if (res['status'] == '1' || res['status'] == 1) {
 						$("#alert-box").html('<div class="alert alert-danger">Santri sudah melakukan registrasi. Silahkan <a href="<?=base_url()?>index.php/Auth" class="btn-link">Login</a></div>');
 
-					} else if (res['status'] == '2' || res['status'] == 2) {
+					}
+					else if (res['status'] == '2' || res['status'] == 2) {
 						$("#alert-box").html('<div class="alert alert-danger">Email telah terdaftar, mohon gunakan email lain</div>');
-
-					} else if (res['status'] == '3' || res['status'] == 3) {
+					}
+					else if (res['status'] == '3' || res['status'] == 3) {
 						$("#alert-box").html('<div class="alert alert-danger">Password tidak cocok</div>');
-
-					} else if (res['status'] == '4' || res['status'] == 4) {
+					}
+					else if (res['status'] == '4' || res['status'] == 4) {
+						console.log(res['random_n']);
 						alert("Registrasi Santri berhasil, silahkan login");
-						document.location.replace('<?=base_url()?>index.php/Auth/santri_login');
-					} else {
+						// document.location.replace('<?=base_url()?>index.php/');
+					}
+					else {
 						alert("Error");
 					}
 					$("#password").val('');
